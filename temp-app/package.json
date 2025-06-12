@@ -2,7 +2,7 @@
   "name": "temp-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nguye340.github.io/FableSmithStudio_Website/",
+  "homepage": "https://nguye340.github.io/FableSmithStudio_Website",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
