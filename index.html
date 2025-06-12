@@ -4,108 +4,192 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FableSmith Studio</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      color: #333;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
-    }
-    header {
-      background-color: #282c34;
-      color: white;
-      padding: 2rem 0;
-      margin-bottom: 2rem;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .tagline {
-      font-style: italic;
-      margin: 0.5rem 0 0;
-      opacity: 0.8;
-    }
-    nav {
-      margin: 2rem 0;
-    }
-    nav a {
-      margin: 0 1rem;
-      color: #282c34;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border: 2px solid #282c34;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    nav a:hover {
-      background-color: #282c34;
-      color: white;
-    }
-    section {
-      background-color: white;
-      border-radius: 8px;
-      padding: 2rem;
-      margin: 2rem 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      padding: 1rem 0;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
 </head>
 <body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+  
+  <!-- Mist Effect -->
+  <div class="mist"></div>
+  
+  <!-- Header & Navigation -->
   <header>
     <div class="container">
-      <h1>FableSmith Studio</h1>
-      <p class="tagline">Fables aren't found. They are forged.</p>
+      <nav class="navbar">
+        <a href="#" class="navbar-logo-link">
+          <img src="hero-page/logo-catsmith.svg" alt="FableSmith Cat Logo" class="navbar-cat-logo" onerror="this.src='https://placehold.co/40x40?text=FS'">
+          <div class="navbar-logo">FableSmith Studio</div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-button">Home</a></li>
+          <li><a href="#games" class="nav-button">Games</a></li>
+          <li><a href="#about" class="nav-button">About</a></li>
+          <li><a href="#contact" class="nav-button">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
   
-  <div class="container">
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#games">Games</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    
-    <section id="home">
-      <h2>Welcome to FableSmith Studio</h2>
-      <p>We're currently rebuilding our website. Check back soon for more content!</p>
-    </section>
-    
-    <section id="games">
-      <h2>Games</h2>
-      <p>Our games section is coming soon, including the Rune Weaver Defense game!</p>
-    </section>
-    
-    <section id="about">
-      <h2>About Us</h2>
-      <p>FableSmith Studio is dedicated to creating engaging interactive experiences.</p>
-    </section>
-    
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Have questions? We'd love to hear from you!</p>
-    </section>
-    
-    <footer>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">FableSmith Studio</h1>
+      <p class="hero-subtitle">Fables aren't found. They're forged.</p>
+      <a href="#games" class="hero-cta">Explore Our Games</a>
+    </div>
+  </section>
+  
+  <!-- Games Section -->
+  <section id="games">
+    <div class="container">
+      <h2 class="section-title">Our Games</h2>
+      <div class="games-container">
+        <!-- Rune Weaver Defense Game -->
+        <div class="game-card">
+          <img src="games-page/spell.png" alt="Rune Weaver Defense" class="game-image" onerror="this.src='https://placehold.co/300x200?text=Rune+Weaver'">
+          <div class="game-content">
+            <h3 class="game-title">Rune Weaver Defense</h3>
+            <p class="game-description">Draw magical runes to cast spells and defend your tower against waves of enemies.</p>
+            <a href="#rune-weaver" class="game-link">Play Now</a>
+          </div>
+        </div>
+        
+        <!-- Heart O' Nightmares Game -->
+        <div class="game-card">
+          <img src="games-page/val_tavern_tbg.png" alt="Heart O' Nightmares" class="game-image" onerror="this.src='https://placehold.co/300x200?text=Heart+O+Nightmares'">
+          <div class="game-content">
+            <h3 class="game-title">Heart O' Nightmares</h3>
+            <p class="game-description">Explore a mysterious world filled with unique characters and challenging puzzles.</p>
+            <a href="#heart-o-nightmares" class="game-link">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Rune Weaver Game Preview -->
+      <div id="rune-weaver" class="rune-weaver-game">
+        <div class="game-header">
+          <h2>Rune Weaver Defense</h2>
+          <div class="health-bar">
+            <span class="heart filled">❤️</span>
+            <span class="heart filled">❤️</span>
+            <span class="heart filled">❤️</span>
+            <span class="heart filled">❤️</span>
+            <span class="heart filled">❤️</span>
+          </div>
+        </div>
+        <div class="game-container">
+          <canvas id="game-canvas" class="game-canvas"></canvas>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <h3>Game Loading...</h3>
+            <p>Draw runes to cast spells and defend your tower!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <div class="about-content">
+        <img src="image-colorgraded.png" alt="FableSmith Studio Team" class="about-image" onerror="this.src='https://placehold.co/600x400?text=Our+Team'">
+        <div class="about-text">
+          <h3>Crafting Interactive Experiences</h3>
+          <p>FableSmith Studio is dedicated to creating engaging, immersive games that blend storytelling with innovative gameplay mechanics.</p>
+          <p>Our team of passionate developers, artists, and storytellers work together to forge unforgettable gaming experiences that challenge and inspire players.</p>
+          <p>We believe that games are a powerful medium for storytelling and self-expression, and we strive to create worlds that players can lose themselves in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Your email">
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" class="form-control" rows="5" placeholder="Your message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="navbar-logo">FableSmith Studio</div>
+      <ul class="footer-links">
+        <li><a href="#home" class="footer-link">Home</a></li>
+        <li><a href="#games" class="footer-link">Games</a></li>
+        <li><a href="#about" class="footer-link">About</a></li>
+        <li><a href="#contact" class="footer-link">Contact</a></li>
+      </ul>
+      <ul class="social-links">
+        <li><a href="#" class="social-link">🐦</a></li>
+        <li><a href="#" class="social-link">📷</a></li>
+        <li><a href="#" class="social-link">🎮</a></li>
+      </ul>
       <p>&copy; 2025 FableSmith Studio. All rights reserved.</p>
-    </footer>
-  </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+    // Custom cursor
+    document.addEventListener('DOMContentLoaded', function() {
+      const cursor = document.querySelector('.custom-cursor');
+      
+      document.addEventListener('mousemove', function(e) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      
+      document.addEventListener('mousedown', function() {
+        cursor.style.width = '25px';
+        cursor.style.height = '25px';
+        cursor.style.backgroundColor = 'rgba(97, 218, 251, 0.8)';
+      });
+      
+      document.addEventListener('mouseup', function() {
+        cursor.style.width = '30px';
+        cursor.style.height = '30px';
+        cursor.style.backgroundColor = 'rgba(97, 218, 251, 0.5)';
+      });
+      
+      // Header scroll effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
