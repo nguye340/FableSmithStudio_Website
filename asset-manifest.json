@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/FableSmithStudio_Website/static/css/main.b4d2203b.css",
+    "main.js": "/FableSmithStudio_Website/static/js/main.7a523566.js",
+    "static/media/HeartONightmare-tittle-purple.png": "/FableSmithStudio_Website/static/media/HeartONightmare-tittle-purple.2665a828592eb1f3ea9c.png",
+    "static/media/HeartONightmare-cleanup-colorgraded3.png": "/FableSmithStudio_Website/static/media/HeartONightmare-cleanup-colorgraded3.e9beeb1353fa37403f95.png",
+    "static/media/OaklandPersonalUseRegular-WyeB4.ttf": "/FableSmithStudio_Website/static/media/OaklandPersonalUseRegular-WyeB4.1a3b75c9589ded422944.ttf",
+    "static/media/FireFoxesDemo-4B6AW.ttf": "/FableSmithStudio_Website/static/media/FireFoxesDemo-4B6AW.6645ef204927c555b86d.ttf",
+    "static/media/PenCursor.svg": "/FableSmithStudio_Website/static/media/PenCursor.f86799acb4b7766001687ca8403b3ce1.svg",
+    "static/media/RhaegarwoodStamp-rgn27.ttf": "/FableSmithStudio_Website/static/media/RhaegarwoodStamp-rgn27.a8db7971c84b9570cb93.ttf",
+    "static/media/HotKissStaggered-oLzx.otf": "/FableSmithStudio_Website/static/media/HotKissStaggered-oLzx.12fc6976ca339771ba13.otf",
+    "static/media/button.svg": "/FableSmithStudio_Website/static/media/button.b4d75b971b6e5b49cb9df53bcd12d5a4.svg",
+    "static/media/RhaegarwoodRegular-Yz23o.ttf": "/FableSmithStudio_Website/static/media/RhaegarwoodRegular-Yz23o.4734e9086f130be9a732.ttf",
+    "static/media/ChalkaholicDemoRegular-plrO.otf": "/FableSmithStudio_Website/static/media/ChalkaholicDemoRegular-plrO.5597990ed2c90db874f8.otf",
+    "static/media/SteakHouse-3z0Wz.otf": "/FableSmithStudio_Website/static/media/SteakHouse-3z0Wz.066e4c37af3e461f7b53.otf",
+    "static/media/ChunkyChalk.ttf": "/FableSmithStudio_Website/static/media/ChunkyChalk.b94c1a8510b071ff229b.ttf",
+    "static/media/FireAceFreeTrial-p7D6d.ttf": "/FableSmithStudio_Website/static/media/FireAceFreeTrial-p7D6d.ad65fc1f323fd05ba9af.ttf",
+    "static/media/HeroFireRegular-nR6YY.ttf": "/FableSmithStudio_Website/static/media/HeroFireRegular-nR6YY.73c9dcb9e28304425617.ttf",
+    "static/media/GlossySheenShine-ow6Wq.ttf": "/FableSmithStudio_Website/static/media/GlossySheenShine-ow6Wq.062fa4d701f1f08e8a6e.ttf",
+    "static/media/FireyNormal-MAMe.ttf": "/FableSmithStudio_Website/static/media/FireyNormal-MAMe.71e9b54531e1a10378b8.ttf",
+    "static/media/OugkehRoundRegular-ARRnL.otf": "/FableSmithStudio_Website/static/media/OugkehRoundRegular-ARRnL.1e3a7274676c53206e6d.otf",
+    "static/media/WinterHouse-1GpJZ.ttf": "/FableSmithStudio_Website/static/media/WinterHouse-1GpJZ.f7e632532b76cec92ad2.ttf",
+    "static/media/abstract-bg-about.svg": "/FableSmithStudio_Website/static/media/abstract-bg-about.4c61b3e6d04ca2ebed28a2bb8ce713af.svg",
+    "static/media/MagicOwlPersonalUse-WyO0O.otf": "/FableSmithStudio_Website/static/media/MagicOwlPersonalUse-WyO0O.f311997d89cd2e287dc7.otf",
+    "static/media/GothichaRegular-d9BjV.ttf": "/FableSmithStudio_Website/static/media/GothichaRegular-d9BjV.7d7f817509df4ff2ee12.ttf",
+    "static/media/NightForest-eZnRg.otf": "/FableSmithStudio_Website/static/media/NightForest-eZnRg.7aea7ac08a2f928b2a7e.otf",
+    "static/media/underline0.svg": "/FableSmithStudio_Website/static/media/underline0.f1a3528861b9984c9f026620ced3b55f.svg",
+    "static/media/Chiseled-KExl.ttf": "/FableSmithStudio_Website/static/media/Chiseled-KExl.bbfe8b380084231c2586.ttf",
+    "static/media/BrightGestureDemo-DOg7x.otf": "/FableSmithStudio_Website/static/media/BrightGestureDemo-DOg7x.0dabd06f4d380086abfa.otf",
+    "static/media/CuteNCuddly-vmZAD.ttf": "/FableSmithStudio_Website/static/media/CuteNCuddly-vmZAD.311c713ecfc5c250f4e3.ttf",
+    "index.html": "/FableSmithStudio_Website/index.html",
+    "main.b4d2203b.css.map": "/FableSmithStudio_Website/static/css/main.b4d2203b.css.map",
+    "main.7a523566.js.map": "/FableSmithStudio_Website/static/js/main.7a523566.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4d2203b.css",
+    "static/js/main.7a523566.js"
+  ]
+}
