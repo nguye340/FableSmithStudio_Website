@@ -3,6 +3,189 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Custom Fonts from assets/fonts directory */
+
+/* BrightGestureDemo */
+@font-face {
+  font-family: 'BrightGestureDemo';
+  src: url('./assets/fonts/BrightGestureDemo-DOg7x.0dabd06f4d380086abfa.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ChalkaholicDemoRegular */
+@font-face {
+  font-family: 'ChalkaholicDemo';
+  src: url('./assets/fonts/ChalkaholicDemoRegular-plrO.5597990ed2c90db874f8.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Chiseled */
+@font-face {
+  font-family: 'Chiseled';
+  src: url('./assets/fonts/Chiseled-KExl.bbfe8b380084231c2586.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ChunkyChalk */
+@font-face {
+  font-family: 'ChunkyChalk';
+  src: url('./assets/fonts/ChunkyChalk.b94c1a8510b071ff229b.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CuteNCuddly */
+@font-face {
+  font-family: 'CuteNCuddly';
+  src: url('./assets/fonts/CuteNCuddly-vmZAD.311c713ecfc5c250f4e3.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FireAceFreeTrial */
+@font-face {
+  font-family: 'FireAce';
+  src: url('./assets/fonts/FireAceFreeTrial-p7D6d.ad65fc1f323fd05ba9af.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FireFoxesDemo */
+@font-face {
+  font-family: 'FireFoxes';
+  src: url('./assets/fonts/FireFoxesDemo-4B6AW.6645ef204927c555b86d.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FireyNormal */
+@font-face {
+  font-family: 'FireyNormal';
+  src: url('./assets/fonts/FireyNormal-MAMe.71e9b54531e1a10378b8.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* GlossySheenShine */
+@font-face {
+  font-family: 'GlossySheenShine';
+  src: url('./assets/fonts/GlossySheenShine-ow6Wq.062fa4d701f1f08e8a6e.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* GothichaRegular */
+@font-face {
+  font-family: 'Gothicha';
+  src: url('./assets/fonts/GothichaRegular-d9BjV.7d7f817509df4ff2ee12.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* HeroFireRegular */
+@font-face {
+  font-family: 'HeroFire';
+  src: url('./assets/fonts/HeroFireRegular-nR6YY.73c9dcb9e28304425617.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* HotKissStaggered */
+@font-face {
+  font-family: 'HotKissStaggered';
+  src: url('./assets/fonts/HotKissStaggered-oLzx.12fc6976ca339771ba13.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* MagicOwlPersonalUse */
+@font-face {
+  font-family: 'MagicOwl';
+  src: url('./assets/fonts/MagicOwlPersonalUse-WyO0O.f311997d89cd2e287dc7.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NightForest */
+@font-face {
+  font-family: 'NightForest';
+  src: url('./assets/fonts/NightForest-eZnRg.7aea7ac08a2f928b2a7e.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OaklandPersonalUseRegular */
+@font-face {
+  font-family: 'Oakland';
+  src: url('./assets/fonts/OaklandPersonalUseRegular-WyeB4.1a3b75c9589ded422944.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OugkehRoundRegular */
+@font-face {
+  font-family: 'OugkehRound';
+  src: url('./assets/fonts/OugkehRoundRegular-ARRnL.1e3a7274676c53206e6d.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* RhaegarwoodRegular */
+@font-face {
+  font-family: 'Rhaegarwood';
+  src: url('./assets/fonts/RhaegarwoodRegular-Yz23o.4734e9086f130be9a732.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* RhaegarwoodStamp */
+@font-face {
+  font-family: 'RhaegarwoodStamp';
+  src: url('./assets/fonts/RhaegarwoodStamp-rgn27.a8db7971c84b9570cb93.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SteakHouse */
+@font-face {
+  font-family: 'SteakHouse';
+  src: url('./assets/fonts/SteakHouse-3z0Wz.066e4c37af3e461f7b53.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* WinterHouse */
+@font-face {
+  font-family: 'WinterHouse';
+  src: url('./assets/fonts/WinterHouse-1GpJZ.f7e632532b76cec92ad2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Font classes */
 .font-cinzel {
