@@ -1,0 +1,22 @@
+services:
+  # Backend API service
+  - type: web
+    name: fablesmith-api
+    env: node
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Add other environment variables as needed
+
+  # Frontend static site
+  - type: web
+    name: fablesmith-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
