@@ -14,7 +14,7 @@ function Navigation() {
   return (
     <nav className="navbar">
       <a href="/" className="navbar-logo-link">
-        <img src="/hero-page/logo-catsmith.svg" alt="FableSmiths Cat Logo" className="navbar-cat-logo" />
+        <img src={require('./assets/hero-page/logo-catsmith.svg')} alt="FableSmiths Cat Logo" className="navbar-cat-logo" />
         <div className="navbar-logo">FableSmiths</div>
       </a>
       <ul className="nav-links">

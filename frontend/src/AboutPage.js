@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './AboutPage.css';
 import LazyImage from './components/LazyImage';
 import './components/LazyImage.css';
-import abstractBgAbout from './assets/abstract-bg-about.svg';
+import abstractBgAbout from './assets/abstract-bg-about.4c61b3e6d04ca2ebed28.svg';
 
 const AboutPage = () => {
   const [magicParticles, setMagicParticles] = useState([]);

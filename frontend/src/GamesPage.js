@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './AboutPage.css';
+import './GamesPage.css';
 import LazyImage from './components/LazyImage';
 import './components/LazyImage.css';
-import abstractBgAbout from './assets/abstract-bg-about.svg';
+import abstractBgAbout from './assets/abstract-bg-about.4c61b3e6d04ca2ebed28.svg';
 
-const AboutPage = () => {
+const GamesPage = () => {
   const [magicParticles, setMagicParticles] = useState([]);
   
   // Generate magic particles
@@ -126,7 +126,7 @@ const AboutPage = () => {
               {/* Team Member 1 */}
               <div className="team-member">
                 <LazyImage 
-                  src="/profiles/han-blend.png" 
+                  src={require('./assets/profiles/han-blend.png')} 
                   alt="Han Nguyen" 
                   className="member-avatar" 
                   style={{backgroundSize: 'cover'}} 
@@ -142,7 +142,7 @@ const AboutPage = () => {
               {/* Team Member 2 */}
               <div className="team-member">
                 <LazyImage 
-                  src="/profiles/subho-hi.png" 
+                  src={require('./assets/profiles/subho-hi.png')} 
                   alt="Shubhodeep Karmakar" 
                   className="member-avatar" 
                   style={{backgroundSize: 'cover'}} 
@@ -158,7 +158,7 @@ const AboutPage = () => {
               {/* Team Member 3 */}
               <div className="team-member">
                 <LazyImage 
-                  src="/profiles/nicole.png" 
+                  src={require('./assets/profiles/nicole.png')} 
                   alt="Nicole Ocampo" 
                   className="member-avatar" 
                   style={{backgroundSize: 'cover'}} 
@@ -174,7 +174,7 @@ const AboutPage = () => {
               {/* Team Member 4 */}
               <div className="team-member">
                 <LazyImage 
-                  src="/profiles/emily.png" 
+                  src={require('./assets/profiles/emily.png')} 
                   alt="Emily" 
                   className="member-avatar" 
                   style={{backgroundSize: 'cover'}} 
@@ -190,7 +190,7 @@ const AboutPage = () => {
               {/* Team Member 5 */}
               <div className="team-member">
                 <LazyImage 
-                  src="/profiles/celery-val.png" 
+                  src={require('./assets/profiles/celery-val.png')} 
                   alt="Valerie Wei" 
                   className="member-avatar" 
                   style={{backgroundSize: 'cover'}} 
@@ -217,4 +217,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default GamesPage;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRive } from "rive-react";
 import "./ExcavationReveal.css";
 import "./fonts.css";
-import backgroundImage from "./background-image.jpg";
+import backgroundImage from "./assets/hero-page/heroBG.png";
 
 const ExcavationReveal = ({ title, subtitle }) => {
   const [revealed, setRevealed] = useState(false);
@@ -14,7 +14,7 @@ const ExcavationReveal = ({ title, subtitle }) => {
   
   // Use Rive with state machine
   const { RiveComponent, rive } = useRive({
-    src: `${process.env.PUBLIC_URL}/hero-page/catsmith.riv`,
+    src: require('./assets/hero-page/catsmith.riv'),
     autoplay: true,
     stateMachines: "State Machine 1",
   });
@@ -140,7 +140,7 @@ const ExcavationReveal = ({ title, subtitle }) => {
       {/* Wall layer */}
       <div 
         className={`wall ${clickCount > 0 ? 'cracking' : ''} ${revealed ? 'revealed' : ''}`}
-        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/hero-page/wall-shorter-4.png)` }}
+        style={{ backgroundImage: `url(${require('./assets/hero-page/ImprovedWallShort1.png')})` }}
       >
         {/* Navbar mist effect */}
         <div className="navbar-mist">
@@ -186,7 +186,7 @@ const ExcavationReveal = ({ title, subtitle }) => {
       <div className="hidden-content">
         <div 
           className="magical-background" 
-          style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/hero-page/hero-bg.png)` }}
+          style={{ backgroundImage: `url(${require('./assets/hero-page/heroBG.png')})` }}
         />
         
         {/* Fireflies that can be dispelled */}
