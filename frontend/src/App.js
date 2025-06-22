@@ -41,12 +41,14 @@ function HomePageWrapper() {
     <div className="App fantasy-bg">
       <Navigation />
       <Mist />
-      <ExcavationReveal 
-        title="Fables aren't found. They're forged." 
-        subtitle="" 
-      />
-      <div className="home-section">
-        <HomePage />
+      <div className="content-wrapper">
+        <ExcavationReveal 
+          title="Fables aren't found. They're forged." 
+          subtitle="" 
+        />
+        <div className="home-section">
+          <HomePage />
+        </div>
       </div>
     </div>
   );
