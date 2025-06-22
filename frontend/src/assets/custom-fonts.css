@@ -1,0 +1,10 @@
+/* Custom fonts for FableSmith Fantasy Landing */
+@font-face {
+  font-family: 'NightForest';
+  src: url('./static/media/NightForest-eZnRg.7aea7ac08a2f928b2a7e.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Add any other custom fonts here */
