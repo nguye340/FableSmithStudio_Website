@@ -100,7 +100,18 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 5;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive styles */
