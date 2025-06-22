@@ -33,7 +33,7 @@ body {
 }
 
 .fantasy-bg {
-  background: url('/hero-page/fantasy-bg.jpg') no-repeat center center fixed;
+  background: url('./assets/hero-page/heroBG.png') no-repeat center center fixed;
   background-size: cover;
   color: var(--light-text);
 }
