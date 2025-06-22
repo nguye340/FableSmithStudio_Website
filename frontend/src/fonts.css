@@ -1,0 +1,41 @@
+/* fonts.css - Font imports and definitions for FableSmith Studio website */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+/* Font classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.font-merriweather {
+  font-family: 'Merriweather', serif;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
+
+/* Body text */
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+/* Special text classes */
+.fantasy-text {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+.story-text {
+  font-family: 'Merriweather', serif;
+  line-height: 1.8;
+}

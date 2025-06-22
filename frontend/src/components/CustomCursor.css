@@ -1,0 +1,61 @@
+/* CustomCursor.css */
+
+.custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor--clicked {
+  width: 36px;
+  height: 36px;
+  border-color: rgba(255, 157, 0, 0.8);
+  transition: width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+.custom-cursor-dot--clicked {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 157, 0, 1);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor--link-hovered {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(138, 79, 255, 0.8);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+.custom-cursor--hidden,
+.custom-cursor-dot--hidden {
+  opacity: 0;
+}
+
+/* Disable custom cursor on mobile devices */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}
