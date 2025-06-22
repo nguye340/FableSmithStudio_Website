@@ -97,7 +97,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
       <CustomCursor />
       <Routes>
         <Route path="/" element={<HomePageWrapper />} />
@@ -105,7 +105,7 @@ function App() {
         <Route path="/about" element={<AboutPageWrapper />} />
         <Route path="/contact" element={<ContactPageWrapper />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
