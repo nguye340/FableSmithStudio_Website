@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import './RuneWeaverGame.css';
-import './fonts.css';
+import '../fonts.css';
 import { PPlusRecognizer } from './PPlusRecognizer';
-import underlineSvg from '../assets/underline0.svg';
+import underlineSvg from '../assets/hero-page/underline0.svg';
 
 const RuneWeaverGame = () => {
   const canvasRef = useRef(null);
