@@ -1038,6 +1038,7 @@
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 30px; /* Add top margin to prevent cutoff */
 }
 
 .youtube-video-container:hover {
@@ -1052,7 +1053,8 @@
   width: 100%;
   height: 100%;
   border: none;
-  padding-top: 10px; /* Add padding to prevent top cutoff */
+  transform: translateY(20px); /* Move the iframe down to prevent top cutoff */
+  height: calc(100% - 20px); /* Adjust height to compensate for the transform */
 }
 
 .tools-list {
