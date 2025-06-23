@@ -25,7 +25,7 @@
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 0; /* Removed top padding to push image up */
 }
 
 .about-header {
