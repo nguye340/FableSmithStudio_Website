@@ -39,3 +39,7 @@ yarn-error.log*
 # Temporary files
 /temp/
 /tmp/
+
+# Large media files
+*.mp4
+frontend/src/assets/games-page/Trailer-PostTrauma.mp4
