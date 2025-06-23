@@ -3,6 +3,7 @@ import { useRive } from "rive-react";
 import "./ExcavationReveal.css";
 import "./fonts.css";
 import backgroundImage from "./assets/hero-page/heroBG.png";
+import { ReactComponent as LogoCatsmith } from "./assets/hero-page/logo-catsmith.svg";
 
 const ExcavationReveal = ({ title, subtitle }) => {
   const [revealed, setRevealed] = useState(false);
@@ -206,6 +207,9 @@ const ExcavationReveal = ({ title, subtitle }) => {
         ))}
         
         <div className={`text-reveal ${revealed ? 'visible' : ''}`}>
+          <div className="logo-container">
+            <LogoCatsmith className="logo" />
+          </div>
           <h1 className="reveal-title">{title}</h1>
           <h2 className="reveal-subtitle">{subtitle}</h2>
         </div>
