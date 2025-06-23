@@ -103,13 +103,16 @@ function GamesPage() {
             <div className="video-spotlight">
               <div className="video-glow"></div>
               <div className="featured-video">
-                <div className="video-play-button">
-                  <span className="play-icon">▶</span>
-                </div>
+                <video 
+                  className="gameplay-video" 
+                  src="./assets/games-page/Trailer-PostTrauma.mp4" 
+                  controls 
+                  poster="./assets/HeartONightmare-tittle-purple.png"
+                  preload="metadata">
+                  Your browser does not support the video tag.
+                </video>
                 <h3 className="video-title">Exclusive Gameplay Preview</h3>
                 <p className="video-description">Watch Heart O' Nightmares in action and discover the unique gameplay mechanics</p>
-                <div className="video-duration">3:45</div>
-                <div className="video-cta">Click to Play</div>
               </div>
             </div>
           </div>
