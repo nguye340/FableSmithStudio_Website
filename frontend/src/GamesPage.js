@@ -106,7 +106,7 @@ function GamesPage() {
                 <div className="youtube-video-container">
                   <iframe
                     className="gameplay-video"
-                    src="https://www.youtube.com/embed/i4u0_fzbd1Q?modestbranding=1"
+                    src="https://www.youtube.com/embed/i4u0_fzbd1Q?modestbranding=1&rel=0&controls=1"
                     title="Heart O' Nightmares Gameplay Preview"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

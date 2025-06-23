@@ -1032,7 +1032,7 @@
   position: relative;
   width: 90%; /* Reduced from 100% to prevent overflow */
   max-width: 800px;
-  padding-bottom: 56.25%; /* Standard 16:9 aspect ratio */
+  padding-bottom: 65%; /* Increased aspect ratio to provide more vertical space */
   margin: 0 auto 20px;
   border-radius: 10px;
   overflow: hidden;
