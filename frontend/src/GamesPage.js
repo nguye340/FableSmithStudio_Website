@@ -1,8 +1,8 @@
 import React from 'react';
 import './GamesPage.css';
 // Import images
-import backgroundImage from './assets/games-page/bed-urska-full.png';
-import titleImage from './assets/games-page/Urska.png';
+import backgroundImage from './assets/HeartONightmare-cleanup-colorgraded3.png';
+import titleImage from './assets/HeartONightmare-tittle-purple.png';
 import ImageSlideshow from './components/ImageSlideshow';
 
 function GamesPage() {
