@@ -186,7 +186,22 @@
   font-style: normal;
   font-display: swap;
 }
-
+/* LittleWitches */
+@font-face {
+  font-family: 'LittleWitches';
+  src: url('./assets/fonts/LittleWitches-K7r7y.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* QilavoenTrial */
+@font-face {
+  font-family: 'QilavoenTrial';
+  src: url('./assets/fonts/QilavoenTrialRegular-3lOl8.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 /* Font classes */
 .font-cinzel {
   font-family: 'Cinzel', serif;
