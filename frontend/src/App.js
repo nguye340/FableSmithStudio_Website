@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
 import Mist from "./Mist";
 import ExcavationReveal from "./ExcavationReveal";
@@ -8,29 +8,26 @@ import GamesPage from './GamesPage';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
 import CustomCursor from './components/CustomCursor';
+import SimpleNav from './components/GooeyNav';
 
 // Main navigation component
 function Navigation() {
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Games", href: "/games" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
     <nav className="navbar">
-      <a href="/" className="navbar-logo-link">
+      <Link to="/" className="navbar-logo-link">
         <img src={require('./assets/hero-page/logo-catsmith.svg')} alt="FableSmiths Cat Logo" className="navbar-cat-logo" />
         <div className="navbar-logo">FableSmiths</div>
-      </a>
-      <ul className="nav-links">
-        <li>
-          <a href="/" className="nav-button">Home</a>
-        </li>
-        <li>
-          <a href="/games" className="nav-button">Games</a>
-        </li>
-        <li>
-          <a href="/about" className="nav-button">About</a>
-        </li>
-        <li>
-          <a href="/contact" className="nav-button">Contact</a>
-        </li>
-      </ul>
+      </Link>
+      <div className="navbar-simple">
+        <SimpleNav items={navItems} />
+      </div>
     </nav>
   );
 }
