@@ -6,22 +6,29 @@ import titleImage from './assets/HeartONightmare-tittle-purple.png';
 import ImageSlideshow from './components/ImageSlideshow';
 
 function GamesPage() {
-  // Define the page background style
-  const pageStyle = {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed'
-  };
   return (
-    <div className="games-page" style={pageStyle}>
-      {/* Hero Section */}
-      <div className="games-hero-section">
-        <div className="games-hero-overlay">
-          {/* Add a div with a dark overlay */}
-          <div className="games-hero-dark-overlay"></div>
-        </div>
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+      <img 
+        src={backgroundImage} 
+        alt="Background" 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
+          opacity: 0.8,
+          zIndex: -1,
+          pointerEvents: 'none'
+        }}
+      />
+      <div className="games-page">
+        {/* Hero Section */}
+        <div className="games-hero-section">
+          <div className="games-hero-overlay">
+            <div className="games-hero-dark-overlay"></div>
+          </div>
         <div className="games-hero-content">
           <div className="games-hero-title-container">
             <img src={titleImage} alt="Heart O' Nightmares" className="games-hero-title-image" />
@@ -216,6 +223,7 @@ function GamesPage() {
           <p>&copy; {new Date().getFullYear()} FableSmith Studio. All rights reserved.</p>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

@@ -2,60 +2,53 @@
 
 .custom-cursor {
   position: fixed;
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  transform: translate(-45%, -8%) scale(0.7);
+  transition: transform 0.16s ease, opacity 0.16s ease, filter 0.16s ease;
   z-index: 9999;
-  mix-blend-mode: difference;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+  filter: brightness(1.5); /* Make default cursor lighter */
 }
 
-.custom-cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background-color: white;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s, opacity 0.3s;
-  z-index: 9999;
-  mix-blend-mode: difference;
+@keyframes cursorPulse {
+  0% { transform: translate(-45%, 8%) scale(0.95); }
+  50% { transform: translate(-45%, 8%) scale(0.85); }
+  100% { transform: translate(-45%, 8%) scale(0.95); }
 }
 
 .custom-cursor--clicked {
-  width: 36px;
-  height: 36px;
-  border-color: rgba(255, 157, 0, 0.8);
-  transition: width 0.2s, height 0.2s, border-color 0.2s;
+  animation: cursorPulse 0.3s ease-in-out;
+  transform: translate(-45%, 8%) scale(0.95);
 }
 
-.custom-cursor-dot--clicked {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 157, 0, 1);
-  transition: width 0.2s, height 0.2s, background-color 0.2s;
+/* Disable splash effect */
+.no-splash.custom-cursor--clicked {
+  animation: none;
+  transform: translate(-45%, -8%) scale(0.7);
 }
 
-.custom-cursor--link-hovered {
+.custom-cursor--interactive {
+  transform: translate(-45%, -3%) scale(1);
   width: 60px;
   height: 60px;
-  border-color: rgba(138, 79, 255, 0.8);
-  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  filter: brightness(1); /* Reset brightness for interactive state */
 }
 
-.custom-cursor--hidden,
-.custom-cursor-dot--hidden {
+.custom-cursor--hover {
+  transform: translate(-45%, -3%) scale(1);
+}
+
+.custom-cursor--hidden {
   opacity: 0;
 }
 
 /* Disable custom cursor on mobile devices */
 @media (max-width: 768px) {
-  .custom-cursor,
-  .custom-cursor-dot {
+  .custom-cursor {
     display: none;
   }
 }

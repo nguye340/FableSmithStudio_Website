@@ -712,8 +712,8 @@ const RuneWeaverGame = () => {
       creatures.forEach(creature => {
         const enemyImage = enemyImages[creature.element];
         if (enemyImage) {
-          const creatureWidth = 120; 
-          const creatureHeight = 120; 
+          const creatureWidth = 80; // Reduced from 120
+          const creatureHeight = 80; // Reduced from 120
           context.drawImage(
             enemyImage,
             creature.x - creatureWidth / 2,
@@ -756,8 +756,8 @@ const RuneWeaverGame = () => {
     if (tutorialEnemy) {
       const enemyImage = enemyImages[tutorialEnemy.element];
       if (enemyImage) {
-        const creatureWidth = 120; 
-        const creatureHeight = 120; 
+        const creatureWidth = 80; // Reduced from 120
+        const creatureHeight = 80; // Reduced from 120
         context.drawImage(
           enemyImage,
           tutorialEnemy.x - creatureWidth / 2,
@@ -1639,7 +1639,7 @@ const RuneWeaverGame = () => {
           <div className="button-container">
             <button 
               onClick={startGame}
-              className="control-button tutorial-button"
+              className="start-button"
             >
               Start Game
             </button>

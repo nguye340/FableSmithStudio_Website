@@ -1,38 +1,73 @@
 /* GamesPage.css */
 @import url('./common.css');
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6a3de8, #9d4edd);
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7d4fe8, #b07aff);
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+}
+
+/* Base HTML and Body */
+html {
+  height: 100%;
+  overflow: -moz-scrollbar-vertical;
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #6a3de8 rgba(20, 20, 20, 0.8);
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .games-page {
   width: 100%;
-  min-height: 100vh;
+  flex: 1;
   font-family: 'Poppins', sans-serif;
   position: relative;
-  overflow-x: hidden;
-  /* Background image is now handled in the JS component */
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
 }
+
+/* Background image is now handled by the img tag in the component */
 
 .games-page-container {
   width: 100%;
-  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
-}
-
-.games-page-bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('./assets/abstract-bg-about.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.7;
-  z-index: -2;
-  filter: saturate(1.2) brightness(1.1);
+  flex: 1;
 }
 
 /* Floating mist animation moved to common.css */
@@ -41,23 +76,25 @@
 .games-hero-section {
   position: relative;
   width: 100%;
-  height: 90vh;
-  min-height: 700px;
+  min-height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  margin-bottom: 0;
+  padding: 80px 20px;
+  margin-bottom: 2rem;
+  z-index: 1;
+  flex-shrink: 0;
 }
 
 .games-hero-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Background is now handled by inline styles in the component */
   z-index: -1;
+  pointer-events: none;
 }
 
 .games-hero-dark-overlay {

@@ -1,0 +1,31 @@
+/* Loading screen styles */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a0a0a;
+  color: #6a3de8;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  z-index: 9999;
+  opacity: 0.9;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(106, 61, 232, 0.3);
+  border-radius: 50%;
+  border-top-color: #6a3de8;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

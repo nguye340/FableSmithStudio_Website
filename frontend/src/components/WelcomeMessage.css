@@ -1,0 +1,429 @@
+/* Using Google Fonts with system font fallback */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Selection Styling */
+::selection {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+/* For Firefox */
+::-moz-selection {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+/* For WebKit/Blink browsers */
+.highlight-text::selection,
+.poem-line::selection,
+.welcome-text::selection,
+.adventurer-text::selection {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+.highlight-text::-moz-selection,
+.poem-line::-moz-selection,
+.welcome-text::-moz-selection,
+.adventurer-text::-moz-selection {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+/* Welcome Underline */
+.welcome-underline {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: -15px 0 0 0; /* Pulled up more and removed bottom margin */
+  z-index: 1;
+}
+
+.underline-image {
+  width: 220px; /* Slightly narrower */
+  height: 60px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  margin-top: -8px; /* Pull up more */
+}
+
+/* Next Button */
+.next-button-container {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.next-button {
+  background: none;
+  border: none;
+  cursor: none; /* Custom cursor will handle this */
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 140px; /* Slightly larger base size */
+  height: auto;
+  position: relative;
+  z-index: 10;
+  transform-origin: center;
+}
+
+.next-button:hover {
+  transform: scale(1.2); /* Larger scale on hover */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  cursor: url('../assets/cursor/cursor-hand-pointer.png') 16 16, 
+          -webkit-image-set(url('../assets/cursor/cursor-hand-pointer.png') 2x) 32 32, 
+          pointer;
+  cursor: url('../assets/cursor/cursor-hand-pointer.png') 32 32, pointer;
+}
+
+.next-button:active {
+  transform: scale(1.1);
+  filter: brightness(1.1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+  cursor: url('../assets/cursor/cursor-hand-pointer-click1.png') 16 16, 
+          -webkit-image-set(url('../assets/cursor/cursor-hand-pointer-click1.png') 2x) 32 32, 
+          pointer;
+  cursor: url('../assets/cursor/cursor-hand-pointer-click1.png') 32 32, pointer;
+}
+
+.next-button-image {
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Welcome Message Container */
+.welcome-message {
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0.5rem 0; /* Reduced padding */
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* Welcome Header */
+.welcome-header {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.welcome-body {
+  margin: -10px auto 0; /* Pulled up more */
+  padding: 0; /* Removed padding */
+}
+
+/* Welcome Text */
+.welcome-text {
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  margin: 0 0 -5px -10px; /* Reduced bottom margin */
+  padding: 0;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  vertical-align: middle;
+  position: relative;
+}
+
+/* Adventurer Text with Gradient Shift Effect */
+.adventurer-text {
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin: 0 0 0 0.4rem;
+  padding: 0;
+  line-height: 1.1;
+  color: var(--adventurer-color, #9d4edd);
+  background: var(--adventurer-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  position: relative;
+  top: -2px;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  will-change: background-position, text-shadow, transform;
+  transform: translateZ(0);
+  vertical-align: middle;
+  text-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.adventurer-text:hover {
+  text-shadow: 0 0 25px rgba(157, 78, 221, 0.6);
+  transform: translateY(-2px) scale(1.02);
+  animation: gradientShift 5s ease infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1.02); }
+  50% { transform: translateY(-5px) scale(1.02); }
+}
+
+/* Poem Container */
+.poem-container {
+  margin: 0.2rem 0 0 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.6;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInPoem 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInPoem {
+  to {
+    opacity: 1;
+    max-height: 500px;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem 0.8rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Poem Lines */
+.poem-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.32rem;
+  line-height: 1.8;
+  margin: 0.3rem 0;
+  color: #f0f0f0;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(4px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: fadeInLine 0.4s ease-out forwards;
+}
+
+/* Poem line animations - faster sequence */
+.poem-line:nth-child(1) { animation-delay: 0.7s; }
+.poem-line:nth-child(2) { animation-delay: 0.9s; }
+.poem-line:nth-child(3) { animation-delay: 1.1s; }
+.poem-line:nth-child(4) { animation-delay: 1.3s; }
+.poem-line:nth-child(5) { animation-delay: 1.5s; }
+.poem-line:nth-child(6) { animation-delay: 1.7s; }
+
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Highlight Text */
+.highlight-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(147, 112, 219, 0.6);
+  font-style: italic;
+  letter-spacing: 0.8px;
+  display: inline-block;
+  margin: 1.2rem 0 0.3rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(75, 0, 130, 0.12), rgba(138, 43, 226, 0.1));
+  border-left: 3px solid rgba(157, 78, 221, 0.8);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.6s;
+}
+
+.highlight-text:hover {
+  text-shadow: 0 0 25px rgba(157, 78, 221, 0.9);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(94, 0, 165, 0.18), rgba(148, 43, 226, 0.15));
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.2);
+}
+
+.highlight-text:hover::before {
+  left: 100%;
+}
+
+@keyframes fadeInGlow {
+  from {
+    text-shadow: 0 0 0px currentColor, 0 0 0px currentColor, 0 0 0px currentColor;
+  }
+  to {
+    text-shadow: 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor;
+    opacity: 0.9;
+  }
+}
+
+/* Artistic Quote Marks */
+.welcome-message {
+  position: relative;
+  --quote-color: rgba(157, 78, 221, 0.15);
+  --quote-hover: rgba(183, 127, 228, 0.2);
+}
+
+.welcome-message::before,
+.welcome-message::after {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6.5rem;
+  font-weight: 700;
+  color: var(--quote-color);
+  line-height: 0.8;
+  z-index: -1;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+}
+
+.welcome-message::before {
+  content: '\201C'; /* Left double quotation mark */
+  top: -0.5rem;
+  left: -1.2rem;
+  transform: rotate(-5deg) scale(1.1);
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.welcome-message::after {
+  content: '\201D'; /* Right double quotation mark */
+  bottom: 0.5rem;
+  right: -0.5rem;
+  transform: rotate(5deg) scale(1.1);
+  filter: drop-shadow(-2px 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.welcome-message:hover::before,
+.welcome-message:hover::after {
+  color: var(--quote-hover);
+  opacity: 0.9;
+  text-shadow: 0 2px 10px rgba(157, 78, 221, 0.3);
+}
+
+.welcome-message:hover::before {
+  transform: rotate(-8deg) scale(1.15);
+  left: -1.5rem;
+}
+
+.welcome-message:hover::after {
+  transform: rotate(8deg) scale(1.15);
+  right: -0.8rem;
+}
+
+@media (max-width: 992px) {
+  .welcome-title {
+    font-size: 2.5rem;
+  }
+  
+  .welcome-scroll-reveal {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-signature {
+    font-size: 1.1rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-scroll-reveal {
+    font-size: 1rem;
+  }
+  
+  .welcome-signature {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .welcome-body {
+    margin: 1.5rem 0;
+    min-height: 250px;
+  }
+}
+
+/* Animation for the welcome message */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-message > * {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.welcome-message > *:nth-child(1) { animation-delay: 0.2s; }
+.welcome-message > *:nth-child(2) { animation-delay: 0.4s; }
+.welcome-message > *:nth-child(3) { animation-delay: 0.6s; }
+
+/* Color cycle classes */
+.adventurer-text.color-0 { color: #9d4edd !important; } /* Purple */
+.adventurer-text.color-1 { color: #ff00ff !important; } /* Magenta */
+.adventurer-text.color-2 { color: #ff3333 !important; } /* Red */
+.adventurer-text.color-3 { color: #ff9933 !important; } /* Orange */
+.adventurer-text.color-4 { color: #ffdd00 !important; } /* Yellow */
+.adventurer-text.color-5 { color: #ccff00 !important; } /* Lime */
+.adventurer-text.color-6 { color: #3399ff !important; } /* Blue */

@@ -1,11 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const Mist = () => {
+const Mist = ({ visible = true }) => {
   const canvasRef = useRef(null);
+  const [error, setError] = useState(null);
   
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) {
+      setError('Canvas element not found');
+      return;
+    }
+    
     const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      setError('Failed to get 2D context');
+      return;
+    }
+    
     let animationFrameId;
     
     // Set canvas dimensions
@@ -66,6 +77,8 @@ const Mist = () => {
     
     animate();
     
+    // Start animation
+    
     // Cleanup
     return () => {
       window.cancelAnimationFrame(animationFrameId);
@@ -73,17 +86,24 @@ const Mist = () => {
     };
   }, []);
   
+  if (error) {
+    console.error('Mist effect error:', error);
+    return null; // Don't render anything if there's an error
+  }
+  
+  if (!visible) return null; // Don't render if not visible
+
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        pointerEvents: 'none',
-        zIndex: 1
+        zIndex: 1,
+        pointerEvents: 'none'
       }}
     />
   );

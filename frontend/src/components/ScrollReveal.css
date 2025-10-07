@@ -1,0 +1,110 @@
+/* Optimize for performance */
+.scroll-reveal {
+  margin: 20px 0;
+  width: 100%;
+  /* Create a new stacking context */
+  isolation: isolate;
+  /* Prevent layout shifts */
+  contain: content;
+  /* Optimize for scrolling performance */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+.scroll-reveal-text {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: inherit;
+  margin: 0;
+  white-space: pre-wrap;
+  /* Optimize text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent layout shifts */
+  contain: layout style;
+}
+
+.word {
+  display: inline-block;
+  white-space: pre-wrap;
+  /* Optimize animations */
+  will-change: transform, opacity, filter;
+  /* Force hardware acceleration */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  /* Smoother transitions */
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Prevent layout shifts during animation */
+  contain: layout style;
+}
+
+/* Optimize for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal-text,
+  .word {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .scroll-reveal-text {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .scroll-reveal-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-reveal-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .scroll-reveal {
+    margin: 15px 0;
+  }
+  
+  /* Optimize for mobile */
+  .word {
+    will-change: auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-reveal-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Further optimize for small screens */
+  .scroll-reveal {
+    perspective: none;
+  }
+}
+
+/* Optimize for print */
+@media print {
+  .scroll-reveal,
+  .scroll-reveal-text,
+  .word {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
