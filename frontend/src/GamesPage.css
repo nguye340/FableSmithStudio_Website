@@ -48,12 +48,11 @@ body {
 
 /* Page Container */
 .games-page-container {
-  position: relative;
   min-height: 100vh;
   width: auto;
   display: flex;
   flex-direction: column;
-  background: url("../public/images/background.jpg") fixed no-repeat;
+  background: url('../public/images/background.jpg') no-repeat center center fixed;
   background-size: 110%;
 }
 
