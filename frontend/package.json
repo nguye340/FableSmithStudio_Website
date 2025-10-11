@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "fablesmith-landing",
   "version": "0.1.0",
   "private": true,
@@ -22,11 +23,7 @@
   },
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && set PUBLIC_URL=/FableSmithStudio_Website && react-scripts build"
   },
   "browserslist": {
     "production": [
@@ -44,6 +41,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
+    "@craco/craco": "^7.1.0",
     "eslint-plugin-react-hooks": "^5.2.0"
   }
 }

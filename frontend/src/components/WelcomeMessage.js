@@ -3,26 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import { Rive, useRive, useStateMachineInput } from '@rive-app/react-canvas';
 import './WelcomeMessage.css';
 import catsmithRiv from '../assets/hero-page/catsmith4.riv';
-import underlineImage from '../assets/cursor/underline2.png';
-import ParticleEffects from './ParticleEffects';
+import ParticleEffects from './ParticleEffects.js';
 
 // Lazy load heavy components with dynamic imports
-const BlurText = lazy(() => import(/* webpackPrefetch: true */ './BlurText'));
-// Load GSAP and ScrollTrigger first
-const gsapPromise = import('gsap');
-const ScrollTriggerPromise = import('gsap/ScrollTrigger');
+const BlurText = lazy(() => import(/* webpackPrefetch: true */ './BlurText.js'));
 
+// Lazy load ScrollReveal with GSAP initialization
 const ScrollReveal = lazy(async () => {
-  // Wait for both GSAP and ScrollTrigger to be loaded
-  const [gsap, ScrollTrigger] = await Promise.all([gsapPromise, ScrollTriggerPromise]);
+  // Load GSAP and ScrollTrigger in parallel
+  const [gsap, ScrollTriggerModule] = await Promise.all([
+    import('gsap/dist/gsap.js'),
+    import('gsap/ScrollTrigger.js')
+  ]);
   
-  // Register ScrollTrigger plugin
+  // Register ScrollTrigger plugin if gsap is available
   if (gsap && gsap.registerPlugin) {
-    gsap.registerPlugin(ScrollTrigger.default || ScrollTrigger);
+    gsap.registerPlugin(ScrollTriggerModule.default || ScrollTriggerModule);
   }
   
-  // Now import the ScrollReveal component
-  return import(/* webpackPrefetch: true */ './ScrollReveal');
+  // Import the ScrollReveal component
+  return import('./ScrollReveal.js');
 });
 
 // Font loading is now handled via CSS @import for better performance

@@ -1,12 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './GamesPage.css';
 import titleImage from './assets/HeartONightmare-tittle-purple.png';
-import ImageSlideshow from './components/ImageSlideshow';
-import CircularGallery from './components/CircularGallery';
-import ToolsSection from './components/ToolsSection/ToolsSection';
-import PageBackground from './components/PageBackground/PageBackground';
-import SparkleEffect from './components/SparkleEffect';
-import SparkleTrail from './components/SparkleTrail';
+import spellImage from './assets/games-page/spell.png';
+import bossFightImage from './assets/games-page/boss-fight.png';
+import dialogueImage from './assets/games-page/Dialogue2.png';
+import environmentImage from './assets/games-page/environment.png';
+import almaColorScheme from './assets/games-page/AlmaColorScheme.png';
+import almaModel from './assets/games-page/alma-model.png';
+import benhardConcept from './assets/games-page/benhard-concept.png';
+import benhardModel from './assets/games-page/benhard-model.png';
+import image76 from './assets/games-page/image76.png';
+import almaVisage from './assets/games-page/alma-visage.png';
+import entryWay from './assets/games-page/entryWay.png';
+import mapLayout from './assets/games-page/MapLayout_SmallVillage.png';
+import bedUrska from './assets/games-page/bed-urska.png';
+import tillyUrskaDoll from './assets/games-page/tilly-urska-doll.png';
+import enemyModel from './assets/games-page/enemy-model.png';
+import imageCreatures from './assets/games-page/image-creatures.png';
+import image79 from './assets/games-page/image79.png';
+import image82 from './assets/games-page/image82.png';
+import world1 from './assets/games-page/world1.png';
+import tavBg from './assets/games-page/tav-bg.png';
+import ImageSlideshow from './components/ImageSlideshow.js';
+import CircularGallery from './components/CircularGallery.js';
+import ToolsSection from './components/ToolsSection/ToolsSection.js';
+import PageBackground from './components/PageBackground/PageBackground.js';
+import SparkleEffect from './components/SparkleEffect.js';
+import SparkleTrail from './components/SparkleTrail.js';
 
 function GamesPage() {
   const [hoveredImage, setHoveredImage] = useState(null);
@@ -77,10 +97,10 @@ function GamesPage() {
                 <div className="concept-slideshow">
                   <ImageSlideshow 
                     images={[
-                      '/games-page/bed-urska-full.png',
-                      '/games-page/image79.png',
-                      '/games-page/image82.png',
-                      '/games-page/image76.png'
+                      bedUrska,
+                      image79,
+                      image82,
+                      image76
                     ]} 
                     alt="The Vision"
                   />
@@ -101,10 +121,10 @@ function GamesPage() {
                 <div className="concept-slideshow">
                   <ImageSlideshow 
                     images={[
-                      '/games-page/world1.png',
-                      '/games-page/entryWay.png',
-                      '/games-page/tav-bg.png',
-                      '/games-page/MapLayout_SmallVillage.png'
+                      world1,
+                      entryWay,
+                      tavBg,
+                      mapLayout
                     ]} 
                     alt="The World"
                   />
@@ -182,19 +202,19 @@ function GamesPage() {
               <h3 className="screenshots-title">Game Mechanics in Action</h3>
               <div className="screenshots-gallery">
                 <div className="screenshot-item">
-                  <div className="screenshot-image" style={{backgroundImage: `url(${require('./assets/games-page/spell.png')})`}}></div>
+                  <div className="screenshot-image" style={{backgroundImage: `url(${spellImage})`}}></div>
                   <div className="screenshot-caption">Spell Combat System</div>
                 </div>
                 <div className="screenshot-item">
-                  <div className="screenshot-image" style={{backgroundImage: `url(${require('./assets/games-page/boss-fight.png')})`}}></div>
+                  <div className="screenshot-image" style={{backgroundImage: `url(${bossFightImage})`}}></div>
                   <div className="screenshot-caption">Enemy AI in Action</div>
                 </div>
                 <div className="screenshot-item">
-                  <div className="screenshot-image" style={{backgroundImage: `url(${require('./assets/games-page/Dialogue2.png')})`}}></div>
+                  <div className="screenshot-image" style={{backgroundImage: `url(${dialogueImage})`}}></div>
                   <div className="screenshot-caption">Dialogue System</div>
                 </div>
                 <div className="screenshot-item">
-                  <div className="screenshot-image" style={{backgroundImage: `url(${require('./assets/games-page/environment.png')})`}}></div>
+                  <div className="screenshot-image" style={{backgroundImage: `url(${environmentImage})`}}></div>
                   <div className="screenshot-caption">Game Environment</div>
                 </div>
               </div>
@@ -214,55 +234,55 @@ function GamesPage() {
               <CircularGallery 
                 items={[
                   { 
-                    image: require('./assets/games-page/AlmaColorScheme.png'), 
+                    image: almaColorScheme, 
                     text: 'Color Palette' 
                   },
                   { 
-                    image: require('./assets/games-page/alma-model.png'), 
+                    image: almaModel, 
                     text: '3D Player Model' 
                   },
                   { 
-                    image: require('./assets/games-page/benhard-concept.png'), 
+                    image: benhardConcept, 
                     text: 'Character Art' 
                   },
                   { 
-                    image: require('./assets/games-page/benhard-model.png'), 
+                    image: benhardModel, 
                     text: '3D Character Model' 
                   },
                   { 
-                    image: require('./assets/games-page/image76.png'), 
+                    image: image76, 
                     text: 'Character Art' 
                   },
                   { 
-                    image: require('./assets/games-page/alma-visage.png'), 
+                    image: almaVisage, 
                     text: '3D Model' 
                   },
                   { 
-                    image: require('./assets/games-page/environment.png'), 
+                    image: environmentImage, 
                     text: 'Environment' 
                   },
                   { 
-                    image: require('./assets/games-page/entryWay.png'), 
+                    image: entryWay, 
                     text: 'Entry Way' 
                   },
                   { 
-                    image: require('./assets/games-page/MapLayout_SmallVillage.png'), 
+                    image: mapLayout, 
                     text: 'Small Village Map' 
                   },
                   { 
-                    image: require('./assets/games-page/bed-urska.png'), 
+                    image: bedUrska, 
                     text: 'Bedroom Scene' 
                   },
                   { 
-                    image: require('./assets/games-page/tilly-urska-doll.png'), 
+                    image: tillyUrskaDoll, 
                     text: '3D Creature' 
                   },
                   { 
-                    image: require('./assets/games-page/enemy-model.png'), 
+                    image: enemyModel, 
                     text: '3D Creature' 
                   },
                   { 
-                    image: require('./assets/games-page/image-creatures.png'), 
+                    image: imageCreatures, 
                     text: 'Creatures' 
                   }
                 ].map((item, index) => ({

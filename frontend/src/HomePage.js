@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import './HomePage.css';
 
 // Lazy load the WelcomeMessage component
-const WelcomeMessage = lazy(() => import('./components/WelcomeMessage'));
+const WelcomeMessage = lazy(() => import('./components/WelcomeMessage.js'));
 
 const HomePage = () => {
   return (

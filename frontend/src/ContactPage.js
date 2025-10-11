@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ContactPage.css';
-import PageBackground from './components/PageBackground/PageBackground';
+import PageBackground from './components/PageBackground/PageBackground.js';
 import UrskaImage from './assets/games-page/Urska1.png';
 
 const ContactPage = () => {

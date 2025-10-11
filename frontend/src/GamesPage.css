@@ -2,6 +2,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 @import url('./common.css');
 
+/* Concept and Narrative Section */
+.game-details-section {
+  padding: 4rem 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.concept-narrative-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.concept-column {
+  background: rgba(20, 10, 30, 0.6);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.concept-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(138, 43, 226, 0.3);
+}
+
+.concept-slideshow {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.concept-subtitle {
+  font-family: 'Cinzel', serif;
+  color: #ff82ff;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.concept-text {
+  color: #e0d0ff;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.concept-text p {
+  margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-details-section {
+    padding: 2rem 1rem;
+  }
+  
+  .concept-slideshow {
+    height: 250px;
+  }
+  
+  .concept-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .concept-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .concept-slideshow {
+    height: 200px;
+  }
+}
+
 /* Hide all scrollbars while keeping scroll functionality */
 /* For WebKit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {

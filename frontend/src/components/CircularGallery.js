@@ -1,5 +1,5 @@
+import React, { useCallback, useMemo, useEffect, useRef, useState } from 'react';
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl';
-import { useEffect, useRef, useState } from 'react';
 import './CircularGallery.css';
 
 function debounce(func, wait) {
@@ -615,63 +615,92 @@ class App {
   }
 }
 
-function ZoomableImage({ src, alt, onClose }) {
+const ZoomableImage = React.memo(({ src, alt, onClose }) => {
+  const handleClick = useCallback((e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  }, [onClose]);
+
+  const buttonStyle = useMemo(() => ({
+    position: 'absolute',
+    top: '20px',
+    right: '20px',
+    background: 'rgba(0, 0, 0, 0.7)',
+    border: '2px solid #fff',
+    color: '#fff',
+    borderRadius: '50%',
+    width: '40px',
+    height: '40px',
+    fontSize: '20px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.3s ease',
+    padding: 0,
+    margin: 0,
+    outline: 'none'
+  }), []);
+
+  // Define modal style
+  const modalStyle = useMemo(() => ({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+    cursor: 'zoom-out'
+  }), []);
+
+  // Define content style
+  const contentStyle = useMemo(() => ({
+    width: '100%',
+    height: '100%',
+    padding: '40px',
+    boxSizing: 'border-box',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative'
+  }), []);
+
+  // Define image style
+  const imageStyle = useMemo(() => ({
+    maxWidth: '100%',
+    maxHeight: '100%',
+    width: 'auto',
+    height: 'auto',
+    objectFit: 'contain',
+    borderRadius: '8px',
+    boxShadow: '0 0 30px rgba(255, 130, 255, 0.3)'
+  }), []);
+
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: 'rgba(0, 0, 0, 0.9)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 1000,
-      cursor: 'zoom-out'
-    }} onClick={onClose}>
-      <div style={{
-        width: '100%',
-        height: '100%',
-        padding: '40px',
-        boxSizing: 'border-box',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative'
-      }} onClick={e => e.stopPropagation()}>
+    <div 
+      style={modalStyle}
+      onClick={handleClick}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image zoom view"
+    >
+      <div 
+        style={contentStyle}
+        onClick={e => e.stopPropagation()}
+      >
         <img 
           src={src} 
-          alt={alt} 
-          style={{
-            maxWidth: '100%',
-            maxHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            objectFit: 'contain',
-            borderRadius: '8px',
-            boxShadow: '0 0 30px rgba(255, 130, 255, 0.3)'
-          }}
+          alt={alt}
+          style={imageStyle}
         />
         <button 
           onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '20px',
-            right: '20px',
-            background: 'rgba(0, 0, 0, 0.7)',
-            border: '2px solid #fff',
-            color: '#fff',
-            borderRadius: '50%',
-            width: '40px',
-            height: '40px',
-            fontSize: '20px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease'
-          }}
+          style={buttonStyle}
           onMouseOver={(e) => {
             e.target.style.background = '#ff82ff';
             e.target.style.transform = 'scale(1.1)';
@@ -680,13 +709,14 @@ function ZoomableImage({ src, alt, onClose }) {
             e.target.style.background = 'rgba(0, 0, 0, 0.7)';
             e.target.style.transform = 'scale(1)';
           }}
+          aria-label="Close image"
         >
           ×
         </button>
       </div>
     </div>
   );
-}
+});
 
 export default function CircularGallery({
   items,
@@ -718,11 +748,11 @@ export default function CircularGallery({
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
 
   return (
-    <>
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <div
         className="circular-gallery"
         ref={containerRef}
-        style={{ position: 'relative' }}
+        style={{ width: '100%', height: '100%' }}
       />
 
       {zoomedItem && (
@@ -733,22 +763,7 @@ export default function CircularGallery({
         />
       )}
 
-      <style jsx global>{`
-        .circular-gallery canvas {
-          cursor: grab;
-          transition: transform 0.3s ease;
-          width: 100% !important;
-          height: 100% !important;
-        }
-
-        .circular-gallery canvas:active {
-          cursor: grabbing;
-        }
-
-        .circular-gallery canvas:hover {
-          transform: scale(1.02);
-        }
-      `}</style>
-    </>
+      {/* Styles are imported from CircularGallery.css */}
+    </div>
   );
 }

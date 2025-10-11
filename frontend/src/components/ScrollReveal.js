@@ -1,6 +1,6 @@
 import { useEffect, useRef, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import './ScrollReveal.css';
 
 // Register ScrollTrigger plugin

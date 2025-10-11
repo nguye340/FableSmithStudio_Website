@@ -27,13 +27,13 @@ const lazyWithPreload = (importFn) => {
 };
 
 // Lazy load components with manual preloading
-const HomePage = lazyWithPreload(() => import('./HomePage'));
-const GamesPage = lazyWithPreload(() => import('./GamesPage'));
-const AboutPage = lazyWithPreload(() => import('./AboutPage'));
-const ContactPage = lazyWithPreload(() => import('./ContactPage'));
-const CustomCursor = lazyWithPreload(() => import('./components/CustomCursor'));
-const SimpleNav = lazyWithPreload(() => import('./components/GooeyNav'));
-const LoadingScreen = lazy(() => import('./components/LoadingScreen'));
+const HomePage = lazyWithPreload(() => import('./HomePage.js'));
+const GamesPage = lazyWithPreload(() => import('./GamesPage.js'));
+const AboutPage = lazyWithPreload(() => import('./AboutPage.js'));
+const ContactPage = lazyWithPreload(() => import('./ContactPage.js'));
+const CustomCursor = lazyWithPreload(() => import('./components/CustomCursor.js'));
+const SimpleNav = lazyWithPreload(() => import('./components/GooeyNav.js'));
+const LoadingScreen = lazy(() => import('./components/LoadingScreen.js'));
 
 // Logo component with lazy loading
 const LogoCatsmith = ({ className }) => {

@@ -1,8 +1,15 @@
 import React from 'react';
 import './AboutPage.css';
 import { FaLinkedin, FaGithub, FaGlobe } from 'react-icons/fa';
-import LightRays from './components/LightRays';
-import ProfilePicture from './components/ProfilePicture';
+import LightRays from './components/LightRays.js';
+import ProfilePicture from './components/ProfilePicture.js';
+
+// Import profile images
+import hanProfile from './assets/profiles/profiles-framed/profile-frame-han.png';
+import shubProfile from './assets/profiles/profiles-framed/profile-frame-shub.png';
+import nicoleProfile from './assets/profiles/profiles-framed/profile-frame-nicole.png';
+import emiProfile from './assets/profiles/profiles-framed/profile-frame-emi.png';
+import valProfile from './assets/profiles/profiles-framed/profile-frame-val.png';
 
 const AboutPage = () => {
   // Add scroll reveal effect
@@ -68,7 +75,7 @@ const AboutPage = () => {
                 {/* Team Member 1 - Han */}
                 <div className="team-member">
                   <ProfilePicture 
-                    src={require('./assets/profiles/profiles-framed/profile-frame-han.png')} 
+                    src={hanProfile} 
                     alt="Han Nguyen"
                     className="member-avatar-framed"
                   />
@@ -89,7 +96,7 @@ const AboutPage = () => {
                 {/* Team Member 2 - Shubhodeep */}
                 <div className="team-member">
                   <ProfilePicture 
-                    src={require('./assets/profiles/profiles-framed/profile-frame-shub.png')} 
+                    src={shubProfile} 
                     alt="Shubhodeep Karmakar"
                     className="member-avatar-framed"
                   />
@@ -110,7 +117,7 @@ const AboutPage = () => {
                 {/* Team Member 3 - Nicole */}
                 <div className="team-member">
                   <ProfilePicture 
-                    src={require('./assets/profiles/profiles-framed/profile-frame-nicole.png')} 
+                    src={nicoleProfile} 
                     alt="Nicole Ocampo"
                     className="member-avatar-framed"
                   />
@@ -128,7 +135,7 @@ const AboutPage = () => {
                 {/* Team Member 4 - Emily */}
                 <div className="team-member">
                   <ProfilePicture 
-                    src={require('./assets/profiles/profiles-framed/profile-frame-emi.png')} 
+                    src={emiProfile} 
                     alt="Emily"
                     className="member-avatar-framed"
                   />
@@ -146,7 +153,7 @@ const AboutPage = () => {
                 {/* Team Member 5 - Valerie */}
                 <div className="team-member">
                   <ProfilePicture 
-                    src={require('./assets/profiles/profiles-framed/profile-frame-val.png')} 
+                    src={valProfile} 
                     alt="Valerie Wei"
                     className="member-avatar-framed"
                   />
