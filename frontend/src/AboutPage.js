@@ -2,6 +2,7 @@ import React from 'react';
 import './AboutPage.css';
 import { FaLinkedin, FaGithub, FaGlobe } from 'react-icons/fa';
 import LightRays from './components/LightRays';
+import ProfilePicture from './components/ProfilePicture';
 
 const AboutPage = () => {
   // Add scroll reveal effect
@@ -66,9 +67,9 @@ const AboutPage = () => {
               <div className="team-members-row">
                 {/* Team Member 1 - Han */}
                 <div className="team-member">
-                  <img 
+                  <ProfilePicture 
                     src={require('./assets/profiles/profiles-framed/profile-frame-han.png')} 
-                    alt="Han Nguyen" 
+                    alt="Han Nguyen"
                     className="member-avatar-framed"
                   />
                   <div className="member-info">
@@ -87,9 +88,9 @@ const AboutPage = () => {
                 
                 {/* Team Member 2 - Shubhodeep */}
                 <div className="team-member">
-                  <img 
+                  <ProfilePicture 
                     src={require('./assets/profiles/profiles-framed/profile-frame-shub.png')} 
-                    alt="Shubhodeep Karmakar" 
+                    alt="Shubhodeep Karmakar"
                     className="member-avatar-framed"
                   />
                   <div className="member-info">
@@ -108,20 +109,17 @@ const AboutPage = () => {
                 
                 {/* Team Member 3 - Nicole */}
                 <div className="team-member">
-                  <img 
+                  <ProfilePicture 
                     src={require('./assets/profiles/profiles-framed/profile-frame-nicole.png')} 
-                    alt="Nicole Ocampo" 
+                    alt="Nicole Ocampo"
                     className="member-avatar-framed"
                   />
                   <div className="member-info">
                     <h3 className="member-name">Nicole Ocampo</h3>
                     <p className="member-role">2D Concept Artist</p>
                     <div className="member-links">
-                      <a href="#" className="member-link" aria-label="LinkedIn">
+                      <a href="https://www.linkedin.com/in/ocampo-nicole/" target="_blank" rel="noopener noreferrer" className="member-link" aria-label="LinkedIn">
                         <FaLinkedin className="social-icon" />
-                      </a>
-                      <a href="#" className="member-link" aria-label="Portfolio">
-                        <FaGlobe className="social-icon" />
                       </a>
                     </div>
                   </div>
@@ -129,20 +127,17 @@ const AboutPage = () => {
 
                 {/* Team Member 4 - Emily */}
                 <div className="team-member">
-                  <img 
+                  <ProfilePicture 
                     src={require('./assets/profiles/profiles-framed/profile-frame-emi.png')} 
-                    alt="Emily" 
+                    alt="Emily"
                     className="member-avatar-framed"
                   />
                   <div className="member-info">
                     <h3 className="member-name">Emily</h3>
                     <p className="member-role">Narrative Design</p>
                     <div className="member-links">
-                      <a href="#" className="member-link" aria-label="LinkedIn">
-                        <FaLinkedin className="social-icon" />
-                      </a>
-                      <a href="#" className="member-link" aria-label="Portfolio">
-                        <FaGlobe className="social-icon" />
+                      <a href="https://discord.com/users/BicycleBell" target="_blank" rel="noopener noreferrer" className="member-link" aria-label="Discord">
+                        <i className="fab fa-discord social-icon"></i>
                       </a>
                     </div>
                   </div>
@@ -150,16 +145,16 @@ const AboutPage = () => {
 
                 {/* Team Member 5 - Valerie */}
                 <div className="team-member">
-                  <img 
+                  <ProfilePicture 
                     src={require('./assets/profiles/profiles-framed/profile-frame-val.png')} 
-                    alt="Valerie Wei" 
+                    alt="Valerie Wei"
                     className="member-avatar-framed"
                   />
                   <div className="member-info">
                     <h3 className="member-name">Valerie Wei</h3>
                     <p className="member-role">Art Director, 3D Animator</p>
                     <div className="member-links">
-                      <a href="#" className="member-link" aria-label="LinkedIn">
+                      <a href="https://www.linkedin.com/in/valerie-wei-art/" target="_blank" rel="noopener noreferrer" className="member-link" aria-label="LinkedIn">
                         <FaLinkedin className="social-icon" />
                       </a>
                       <a href="#" className="member-link" aria-label="Portfolio">
@@ -176,7 +171,7 @@ const AboutPage = () => {
         {/* Footer */}
         <footer className="site-footer">
           <div className="footer-content">
-            <p className="copyright">Copyright © 2025 Fablesmiths. All rights reserved.</p>
+            <p className="copyright">Copyright © {new Date().getFullYear()} Han Nguyen at FableSmith Studio. All rights reserved.</p>
           </div>
         </footer>
       </div>

@@ -1,0 +1,63 @@
+/* Global scrollbar styles with fade effect */
+
+/* Base scrollbar styles - visible state */
+:root {
+  --scrollbar-width: 8px;
+  --scrollbar-thumb-color: rgba(150, 150, 170, 0.3);
+  --scrollbar-thumb-hover-color: rgba(180, 180, 200, 0.5);
+  --scrollbar-track-color: transparent;
+  --scrollbar-transition: opacity 0.5s ease, background-color 0.3s ease;
+}
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+  background-color: var(--scrollbar-track-color);
+  transition: var(--scrollbar-transition);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: var(--scrollbar-width);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: var(--scrollbar-transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+  transition: scrollbar-color 0.5s ease;
+}
+
+/* Hide scrollbar when not scrolling */
+html:not(:hover) {
+  --scrollbar-thumb-color: transparent;
+  --scrollbar-thumb-hover-color: transparent;
+}
+
+/* For Firefox */
+html:not(:hover) * {
+  scrollbar-color: transparent transparent;
+}
+
+/* IE and Edge */
+* {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

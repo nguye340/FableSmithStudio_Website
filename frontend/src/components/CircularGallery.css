@@ -1,0 +1,37 @@
+.circular-gallery {
+  width: 100%;
+  height: 100%;
+  min-height: 600px; /* Add a minimum height */
+  overflow: hidden; /* Change from visible to hidden to prevent scrollbars */
+  cursor: grab;
+  position: relative;
+  display: flex; /* Add flex to help with layout */
+}
+
+/* Make canvas fill its container */
+.circular-gallery > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.circular-gallery:active {
+  cursor: grabbing;
+}
+
+/* Hide WebGL canvas scrollbar */
+.circular-gallery canvas {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .circular-gallery {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .circular-gallery {
+    height: 300px !important;
+  }
+}

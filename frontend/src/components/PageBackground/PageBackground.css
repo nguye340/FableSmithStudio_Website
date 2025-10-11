@@ -1,0 +1,34 @@
+.page-background {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../../public/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

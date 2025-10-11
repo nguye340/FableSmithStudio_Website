@@ -104,15 +104,14 @@ body * {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative;
-}
-
-.fantasy-bg {
-  background: #000000;
-  min-height: 100vh;
+  background-color: #000000;
+  color: white;
+  font-family: 'Cinzel', serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   width: 100%;
-  color: var(--light-text);
-  position: relative;
+  overflow-x: hidden;
 }
 
 /* Navigation styles */
@@ -185,9 +184,10 @@ body * {
 
 /* Home section */
 .home-section {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0.5rem;
+  max-width: none;
+  width: 100%;
+  margin: 0;
   position: relative;
   z-index: 5;
 }

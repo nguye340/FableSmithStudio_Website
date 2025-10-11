@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './ContactPage.css';
+import PageBackground from './components/PageBackground/PageBackground';
+import UrskaImage from './assets/games-page/Urska1.png';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +24,7 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate form
@@ -34,118 +36,177 @@ const ContactPage = () => {
       });
       return;
     }
-    
-    // Simulate form submission
-    setFormStatus({
-      submitted: true,
-      error: false,
-      message: 'Thank you for your message! We will get back to you soon.'
-    });
-    
-    // Reset form after successful submission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    
-    // In a real application, you would send the form data to a server here
+
+    try {
+      const response = await fetch('https://usebasin.com/f/d27af3d6b144', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'No Subject',
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setFormStatus({
+          submitted: true,
+          error: false,
+          message: 'Message sent! We\'ll be in touch soon.'
+        });
+        
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setFormStatus({
+        submitted: false,
+        error: true,
+        message: 'Failed to send message. Please try again later.'
+      });
+    }
   };
 
   return (
-    <div className="contact-page">
-      <div className="contact-header">
-        <h1>Contact Us</h1>
-        <p>Have questions or want to collaborate? Reach out to us!</p>
-      </div>
-      
-      <div className="contact-container">
-        <div className="contact-info">
-          <h2>Get in Touch</h2>
-          <div className="info-item">
-            <i className="fas fa-envelope"></i>
-            <p>contact@fablesmiths.com</p>
-          </div>
-          <div className="info-item">
-            <i className="fas fa-map-marker-alt"></i>
-            <p>Virtual Studio, Digital Realm</p>
-          </div>
-          <div className="social-links">
-            <a href="https://twitter.com/fablesmiths" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="https://discord.gg/fablesmiths" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-discord"></i>
-            </a>
-            <a href="https://instagram.com/fablesmiths" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
+    <PageBackground className="contact-page" opacity={0.08}>
+      <div className="contact-content-wrapper">
+        <div className="contact-header">
+          <h1>Contact Us</h1>
+          <p>Have questions or want to collaborate? Reach out to us!</p>
         </div>
         
-        <div className="contact-form">
-          <h2>Send a Message</h2>
-          {formStatus.submitted ? (
-            <div className="form-success">{formStatus.message}</div>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              {formStatus.error && <div className="form-error">{formStatus.message}</div>}
-              
-              <div className="form-group">
-                <label htmlFor="name">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+        <div className="contact-container">
+          <div className="contact-info">
+            <div className="contact-image-container">
+              <img src={UrskaImage} alt="Urska" className="contact-image" />
+            </div>
+            <div className="contact-details">
+              <h2>Get in Touch</h2>
+              <div className="info-item">
+                <i className="fas fa-envelope"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p>nguyenthaohan214@gmail.com</p>
+                </div>
               </div>
-              
-              <div className="form-group">
-                <label htmlFor="email">Email *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+              {/* <div className="info-item">
+                <i className="fas fa-map-marker-alt"></i>
+                <div>
+                  <h3>Location</h3>
+                  <a 
+                    href="https://fablesmiths.itch.io" 
+                    rel="noopener noreferrer"
+                    className="itch-button"
+                  >
+                    Visit us on Itch.io
+                  </a>
+                </div>
+              </div> */}
+            </div>
+          </div>
+          
+          <div className="contact-form-container">
+            {formStatus.submitted ? (
+              <div className="form-success-message">
+                <div className="success-icon">
+                  <i className="fas fa-sparkles"></i>
+                </div>
+                <h3>Message Sent!</h3>
+                <p>{formStatus.message}</p>
+                <div className="success-icons">
+                  <i className="fas fa-envelope-open-text"></i>
+                  <i className="fas fa-magic"></i>
+                  <i className="fas fa-paper-plane"></i>
+                </div>
+                <button 
+                  className="back-button"
+                  onClick={() => setFormStatus({...formStatus, submitted: false})}
+                >
+                  Back to Form
+                </button>
               </div>
-              
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-              </div>
-              
-              <button type="submit" className="submit-btn">Send Message</button>
-            </form>
-          )}
+            ) : (
+              <form onSubmit={handleSubmit} className="contact-form">
+                {formStatus.error && (
+                  <div className="form-error">
+                    <p>{formStatus.message}</p>
+                  </div>
+                )}
+                
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Name <span className="required">*</span></label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="email">Email <span className="required">*</span></label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="subject">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="How can we help?"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="message">Message <span className="required">*</span></label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="5"
+                    placeholder="Type your message here..."
+                    required
+                  ></textarea>
+                </div>
+                
+                <button type="submit" className="submit-btn">
+                  <i className="fas fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </PageBackground>
   );
-};
+}
 
 export default ContactPage;

@@ -1,28 +1,59 @@
 /* CustomCursor.css */
 
+/* Base cursor styles */
 .custom-cursor {
   position: fixed;
-  width: 60px;
-  height: 60px;
   pointer-events: none;
-  transform: translate(-45%, -8%) scale(0.7);
-  transition: transform 0.16s ease, opacity 0.16s ease, filter 0.16s ease;
   z-index: 9999;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: top center;
-  filter: brightness(1.5); /* Make default cursor lighter */
+  background-position: center;
+  transition: transform 0.16s ease, opacity 0.16s ease, filter 0.16s ease;
+  width: 32px;
+  height: 32px;
+  opacity: 1; /* Always visible */
+}
+
+/* Default cursor state */
+.custom-cursor--default {
+  /* Use default cursor image */
+  background-image: var(--cursor-default, url('../assets/cursor/cursor-hover.png'));
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* Hover state */
+.custom-cursor--hover {
+  background-image: var(--cursor-hover, url('../assets/cursor/cursor-hover.png'));
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* Click state */
+.custom-cursor--clicked {
+  background-image: var(--cursor-click, url('../assets/cursor/cursor-hand-pointer-click1.png'));
+  transform: translate(-50%, -50%) scale(0.9);
+  animation: cursorPulse 0.3s ease-in-out;
+}
+
+/* Interactive elements */
+.custom-cursor--interactive {
+  background-image: var(--cursor-interactive, url('../assets/cursor/cursor-hand-pointer.png'));
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* Hide the system cursor */
+body.custom-cursor-active {
+  cursor: none !important;
 }
 
 @keyframes cursorPulse {
-  0% { transform: translate(-45%, 8%) scale(0.95); }
-  50% { transform: translate(-45%, 8%) scale(0.85); }
-  100% { transform: translate(-45%, 8%) scale(0.95); }
+  0% { transform: translate(-45%, -100%) scale(1.5); }
+  50% { transform: translate(-45%, -100%) scale(2); }
+  100% { transform: translate(-45%, -100%) scale(1.5); }
 }
 
 .custom-cursor--clicked {
   animation: cursorPulse 0.3s ease-in-out;
-  transform: translate(-45%, 8%) scale(0.95);
+  transform: translate(-45%, -100%) scale(2);
 }
 
 /* Disable splash effect */

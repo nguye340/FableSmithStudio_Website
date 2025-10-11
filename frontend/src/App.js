@@ -1,22 +1,38 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState, useTransition, useCallback, useMemo } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import "./App.css";
+import "./styles/scrollbar.css";
 
-// Lazy load components with prefetching
-const preloadComponent = (importFn) => {
-  const Component = lazy(importFn);
-  // Start preloading
-  importFn();
+// Performance optimization: Only preload components when needed
+const lazyWithPreload = (importFn) => {
+  let loaded = false;
+  let component = null;
+  
+  const load = async () => {
+    if (!loaded) {
+      const module = await importFn();
+      component = module.default;
+      loaded = true;
+    }
+    return component;
+  };
+  
+  const Component = lazy(async () => {
+    const c = await load();
+    return { default: c };
+  });
+  
+  Component.preload = load;
   return Component;
 };
 
-const ExcavationReveal = preloadComponent(() => import('./ExcavationReveal'));
-const HomePage = preloadComponent(() => import('./HomePage'));
-const GamesPage = preloadComponent(() => import('./GamesPage'));
-const AboutPage = preloadComponent(() => import('./AboutPage'));
-const ContactPage = preloadComponent(() => import('./ContactPage'));
-const CustomCursor = preloadComponent(() => import('./components/CustomCursor'));
-const SimpleNav = preloadComponent(() => import('./components/GooeyNav'));
+// Lazy load components with manual preloading
+const HomePage = lazyWithPreload(() => import('./HomePage'));
+const GamesPage = lazyWithPreload(() => import('./GamesPage'));
+const AboutPage = lazyWithPreload(() => import('./AboutPage'));
+const ContactPage = lazyWithPreload(() => import('./ContactPage'));
+const CustomCursor = lazyWithPreload(() => import('./components/CustomCursor'));
+const SimpleNav = lazyWithPreload(() => import('./components/GooeyNav'));
 const LoadingScreen = lazy(() => import('./components/LoadingScreen'));
 
 // Logo component with lazy loading
@@ -70,10 +86,6 @@ function HomePageWrapper() {
   return (
     <PageWrapper className="fantasy-bg">
       <div className="content-wrapper">
-        <ExcavationReveal 
-          title="Fables aren't found. They're forged." 
-          subtitle="" 
-        />
         <div className="home-section">
           <HomePage />
         </div>
@@ -132,12 +144,45 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+// Preload components on mouse over navigation
+const usePreloadOnHover = () => {
+  const preload = useCallback((component) => {
+    if (component?.preload) {
+      component.preload().catch(console.error);
+    }
+  }, []);
+
+  return { preload };
+};
+
 // Main App component
 function App() {
   const location = useLocation();
-  const [isPending, startTransition] = React.useTransition();
-  const [isNavigating, setIsNavigating] = React.useState(false);
+  const [isPending, startTransition] = useTransition();
+  const [isNavigating, setIsNavigating] = useState(false);
   const isAboutPage = location.pathname.startsWith('/about');
+  const { preload } = usePreloadOnHover();
+  
+  // Preload components for the current route
+  useEffect(() => {
+    const preloadRouteComponents = async () => {
+      try {
+        const routeComponents = {
+          '/': [HomePage],
+          '/games': [GamesPage],
+          '/about': [AboutPage],
+          '/contact': [ContactPage]
+        };
+        
+        const components = routeComponents[location.pathname] || [];
+        await Promise.all(components.map(comp => comp.preload?.()));
+      } catch (error) {
+        console.error('Error preloading components:', error);
+      }
+    };
+    
+    preloadRouteComponents();
+  }, [location.pathname]);
   
   // Handle route changes with startTransition
   const handleRouteChange = React.useCallback((path) => {
@@ -206,7 +251,8 @@ function App() {
   }, [location.pathname, routes]);
   
   // Wrap the entire app in a transition boundary
-  return (
+  // Optimize rendering with useMemo
+  const appContent = useMemo(() => (
     <div className="App">
       <ErrorBoundary>
         <Suspense fallback={<LoadingScreen />}>
@@ -215,7 +261,9 @@ function App() {
         </Suspense>
       </ErrorBoundary>
     </div>
-  );
+  ), [isPending, isNavigating, mainContent]);
+
+  return appContent;
 }
 
 export default App;

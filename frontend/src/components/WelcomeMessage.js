@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo, lazy, Suspense, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Rive, useRive, useStateMachineInput } from '@rive-app/react-canvas';
 import './WelcomeMessage.css';
-import nextButtonImage from '../assets/cursor/nextButton2-rb.png';
+import catsmithRiv from '../assets/hero-page/catsmith4.riv';
 import underlineImage from '../assets/cursor/underline2.png';
+import ParticleEffects from './ParticleEffects';
 
 // Lazy load heavy components with dynamic imports
 const BlurText = lazy(() => import(/* webpackPrefetch: true */ './BlurText'));
@@ -34,6 +36,11 @@ const WelcomeMessage = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   
+  // Handle next button click - navigate to Games page
+  const handleNextClick = useCallback(() => {
+    navigate('/games');
+  }, [navigate]);
+  
   // Handle mouse move for gradient effect
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -49,7 +56,7 @@ const WelcomeMessage = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
@@ -71,7 +78,7 @@ const WelcomeMessage = () => {
       return () => clearTimeout(timer);
     };
 
-    document.addEventListener('click', handleGlobalClick);
+    document.addEventListener('click', handleGlobalClick, { passive: true });
     return () => document.removeEventListener('click', handleGlobalClick);
   }, []);
 
@@ -110,14 +117,32 @@ const WelcomeMessage = () => {
       <span className="welcome-text">Welcome, </span>
     </div>,
     <div key="poem" style={{ marginTop: '0' }}>
-      <div className="poem-line">You stand at FableSmiths' forge,</div>
-      <div className="poem-line">where every tale awaits like iron in the fire.</div>
-      <div className="poem-line">Stay a while, listen to the embers, dream.</div>
+      <div className="poem-line">
+        <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>You stand at FableSmiths' forge,</span>
+      </div>
+      <div className="poem-line">
+        <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>where every tale awaits like iron in the fire.</span>
+      </div>
+      <div className="poem-line">
+        <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>Stay a while, listen to the embers, dream.</span>
+      </div>
       <div className="poem-line empty-line"></div>
-      <div className="poem-line">Perhaps a spark will find you.</div>
-      <div className="poem-line">Or, if you already carry one,</div>
-      <div className="poem-line" style={{ marginTop: '1.5rem' }}>
-        <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>Tell me friend, which fire shall I set upon the anvil for you?</span>
+      <div className="poem-line">
+        <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>Perhaps a spark will find you.</span>
+      </div>
+      <div className="poem-line">
+        <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>Or, if you already carry one,</span>
+      </div>
+      <div className="poem-line" style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+        <span className="highlight-text glass-shine" style={{fontFamily: 'Cinzel', fontWeight: 'extra bold'}}><strong>Which fire shall I set upon the anvil for you?</strong></span>
+        <button
+          className="next-button"
+          onClick={handleNextClick}
+          aria-label="Next"
+        >
+          <span className="arrow-icon">&gt;</span>
+          <span className="arrow-icon hover">&gt;&gt;</span>
+        </button>
       </div>
     </div>
   ];
@@ -176,65 +201,109 @@ const WelcomeMessage = () => {
     }
   }, [mousePosition]);
 
+  // Rive animation setup with error handling
+  const { rive, RiveComponent } = useRive(
+    {
+      src: catsmithRiv, // Using imported Rive file
+      autoplay: true,
+      stateMachines: 'State Machine 1',
+    },
+    {
+      // Rive options
+      fitCanvasToArtboardHeight: true,
+      useOffscreenRenderer: false, // Try disabling offscreen renderer
+    }
+  );
+
+  // Trigger Rive animation on any click in the hero section
+  const handleHeroClick = useCallback((e) => {
+    // Don't trigger if clicking on the next button to avoid conflicts
+    if (e.target.closest('.next-button')) {
+      return;
+    }
+    
+    if (rive) {
+      // Reset and play the animation
+      rive.play();
+      const inputs = rive.stateMachineInputs('State Machine 1');
+      if (inputs && inputs.length > 0) {
+        // Assuming the first input is the trigger
+        const trigger = inputs[0];
+        if (trigger && typeof trigger.fire === 'function') {
+          trigger.fire();
+        }
+      }
+    }
+  }, [rive]);
+
+  // Log Rive loading state and errors
+  useEffect(() => {
+    if (rive) {
+      console.log('Rive instance created:', rive);
+      
+      const handleLoad = () => {
+        console.log('Rive animation loaded successfully');
+      };
+      
+      const handleError = (error) => {
+        console.error('Rive error:', error);
+        console.error('Error details:', {
+          name: error.name,
+          message: error.message,
+          stack: error.stack
+        });
+      };
+      
+      rive.on('load', handleLoad);
+      rive.on('error', handleError);
+      
+      // Clean up
+      return () => {
+        rive.off('load', handleLoad);
+        rive.off('error', handleError);
+        rive.cleanup();
+      };
+    }
+  }, [rive]);
+
   return (
     <div 
       className="welcome-message" 
+      onClick={handleHeroClick}
       ref={(node) => {
         welcomeRef.current = node;
         containerRef.current = node;
       }}
       style={{
+        cursor: 'pointer',
         '--adventurer-gradient': 'linear-gradient(45deg, #9d4edd, #b07aff, #cba6ff, #9d4edd, #b07aff)'
       }}
     >
-      {title}
-      
-      <div className="welcome-underline">
-        <img 
-          src={underlineImage} 
-          alt="" 
-          className="underline-image"
-        />
-      </div>
-      
-      {isVisible && (
-        <Suspense fallback={null}>
-          <div className="welcome-body">
-            <div style={{ ...poemStyle, margin: '0 auto', maxWidth: '800px' }}>
+      <ParticleEffects />
+      <div className="welcome-text-container">
+        <div className="rive-container rive-container-with-particles">
+          <RiveComponent />
+        </div>
+        <div className="text-content">
+          {title}
+          <Suspense fallback={null}>
+            <div className="welcome-body" style={{ ...poemStyle, margin: '0 auto', maxWidth: '800px' }}>
               <ScrollReveal
                 baseOpacity={0}
                 revealDistance="20px"
                 animationDuration={0.8}
                 delay={0.2}
-                triggerOnce
               >
                 <BlurText text={bodyText} />
               </ScrollReveal>
             </div>
-          </div>
-          
-          <p className="welcome-signature">
-            {signature}
-          </p>
-          
-          <div className="next-button-container">
-              <button 
-                className="next-button"
-                onClick={() => {
-                  navigate('/about');
-                }}
-              >
-                <img 
-                  src={nextButtonImage} 
-                  alt="Next" 
-                  className="next-button-image"
-                />
-              </button>
-          </div>
-        </Suspense>
-      )}
+            <div className="welcome-signature">
+              {signature}
+            </div>
+          </Suspense>
+        </div>
+      </div>
     </div>
   );
 };
-
 export default WelcomeMessage;
