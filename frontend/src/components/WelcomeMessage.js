@@ -134,7 +134,7 @@ const WelcomeMessage = () => {
         <span className="highlight-text" style={{fontFamily: 'Cormorant Garamond'}}>Or, if you already carry one,</span>
       </div>
       <div className="poem-line" style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
-        <span className="highlight-text glass-shine" style={{fontFamily: 'Cinzel', fontWeight: 'extra bold'}}><strong>Which fire shall I set upon the anvil for you?</strong></span>
+        <span className="highlight-text glass-shine" style={{fontFamily: 'Cinzel', fontWeight: 'extra bold'}}><strong>Which fire shall I <br />set upon the anvil for you?</strong></span>
         <button
           className="next-button"
           onClick={handleNextClick}
@@ -166,7 +166,7 @@ const WelcomeMessage = () => {
     
     return {
       title: (
-        <h1 className="welcome-title" aria-label="Welcome, Adventurer">
+        <h1 style={{paddingTop: '2rem'}} className="welcome-title" aria-label="Welcome, Adventurer">
           <span className="welcome-text">Welcome, </span>
           <span 
             className={`adventurer-text color-${colorIndex} ${isClicked ? 'glow' : ''}`}

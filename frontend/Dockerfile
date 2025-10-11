@@ -1,3 +1,49 @@
+# Build stage
+FROM node:18-alpine AS build
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies first (better layer caching)
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy the rest of the application
+COPY . .
+
+# Set environment variables
+ENV NODE_OPTIONS=--openssl-legacy-provider
+ENV GENERATE_SOURCEMAP=false
+
+# Build the application
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine
+
+# Install serve globally
+RUN npm install -g serve
+
+# Set working directory
+WORKDIR /app
+
+# Copy built assets from build stage
+COPY --from=build /app/build ./build
+
+# Set environment variables
+ENV PORT=3000
+ENV NODE_ENV=production
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+
+# Command to run the application
+CMD ["serve", "-s", "build", "-l", "tcp://0.0.0.0:3000"]
+
 # # Build stage
 # FROM node:16.20.2-alpine AS build
 # WORKDIR /app
@@ -14,26 +60,26 @@
 # EXPOSE 80
 # CMD ["nginx", "-g", "daemon off;"]
 # 
-# Build stage
-FROM node:18-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-ENV NODE_OPTIONS=--openssl-legacy-provider
-ENV GENERATE_SOURCEMAP=false
-RUN npm run build
+# # Build stage
+# FROM node:18-alpine AS build
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
+# ENV NODE_OPTIONS=--openssl-legacy-provider
+# ENV GENERATE_SOURCEMAP=false
+# RUN npm run build
 
-# Production stage
-FROM node:18-alpine
-WORKDIR /app
-RUN npm install -g serve
-COPY --from=build /app/build ./build
+# # Production stage
+# FROM node:18-alpine
+# WORKDIR /app
+# RUN npm install -g serve
+# COPY --from=build /app/build ./build
 
-# Serve the static files
-ENV PORT=3000
-EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+# # Serve the static files
+# ENV PORT=3000
+# EXPOSE 3000
+# CMD ["serve", "-s", "build", "-l", "3000"]
 
 # Build stage
 # FROM node:18-alpine AS build

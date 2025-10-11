@@ -1,41 +1,18 @@
-import React, { Suspense, lazy, useEffect, useState, useTransition, useCallback, useMemo } from 'react';
+import React, { Suspense, lazy, useEffect, useState, useTransition, useCallback } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import "./App.css";
 import "./styles/scrollbar.css";
 
-// Performance optimization: Only preload components when needed
-const lazyWithPreload = (importFn) => {
-  let loaded = false;
-  let component = null;
-  
-  const load = async () => {
-    if (!loaded) {
-      const module = await importFn();
-      component = module.default;
-      loaded = true;
-    }
-    return component;
-  };
-  
-  const Component = lazy(async () => {
-    const c = await load();
-    return { default: c };
-  });
-  
-  Component.preload = load;
-  return Component;
-};
-
-// Lazy load components with manual preloading
-const HomePage = lazyWithPreload(() => import('./HomePage.js'));
-const GamesPage = lazyWithPreload(() => import('./GamesPage.js'));
-const AboutPage = lazyWithPreload(() => import('./AboutPage.js'));
-const ContactPage = lazyWithPreload(() => import('./ContactPage.js'));
-const CustomCursor = lazyWithPreload(() => import('./components/CustomCursor.js'));
-const SimpleNav = lazyWithPreload(() => import('./components/GooeyNav.js'));
+// Lazy load components
+const HomePage = lazy(() => import('./HomePage.js'));
+const GamesPage = lazy(() => import('./GamesPage.js'));
+const AboutPage = lazy(() => import('./AboutPage.js'));
+const ContactPage = lazy(() => import('./ContactPage.js'));
+const CustomCursor = lazy(() => import('./components/CustomCursor.js'));
 const LoadingScreen = lazy(() => import('./components/LoadingScreen.js'));
+const SimpleNav = lazy(() => import('./components/GooeyNav.js'));
 
-// Logo component with lazy loading
+// Logo component
 const LogoCatsmith = ({ className }) => {
   const [Logo, setLogo] = useState(null);
   
@@ -73,53 +50,16 @@ function Navigation() {
   );
 }
 
-// Page wrapper components
-const PageWrapper = ({ children, className = '' }) => (
-  <div className={`App ${className}`}>
-    <Navigation />
-    {children}
-  </div>
-);
+// Custom hook for preloading on hover
+const usePreloadOnHover = () => {
+  const preload = useCallback((component) => {
+    if (component?.preload) {
+      component.preload().catch(console.error);
+    }
+  }, []);
 
-// Home page component wrapper
-function HomePageWrapper() {
-  return (
-    <PageWrapper className="fantasy-bg">
-      <div className="content-wrapper">
-        <div className="home-section">
-          <HomePage />
-        </div>
-      </div>
-    </PageWrapper>
-  );
-}
-
-// Games page component wrapper
-function GamesPageWrapper() {
-  return (
-    <PageWrapper>
-      <GamesPage />
-    </PageWrapper>
-  );
-}
-
-// About page component wrapper
-function AboutPageWrapper() {
-  return (
-    <PageWrapper>
-      <AboutPage />
-    </PageWrapper>
-  );
-}
-
-// Contact page component wrapper
-function ContactPageWrapper() {
-  return (
-    <PageWrapper>
-      <ContactPage />
-    </PageWrapper>
-  );
-}
+  return { preload };
+};
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component {
@@ -144,18 +84,43 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-// Preload components on mouse over navigation
-const usePreloadOnHover = () => {
-  const preload = useCallback((component) => {
-    if (component?.preload) {
-      component.preload().catch(console.error);
-    }
-  }, []);
+// Page wrapper component
+const PageWrapper = ({ children, className = '' }) => (
+  <div className={`App ${className}`}>
+    <Navigation />
+    {children}
+  </div>
+);
 
-  return { preload };
-};
+// Page wrapper components
+const HomePageWrapper = () => (
+  <PageWrapper className="fantasy-bg">
+    <div className="content-wrapper">
+      <div className="home-section">
+        <HomePage />
+      </div>
+    </div>
+  </PageWrapper>
+);
 
-// Main App component
+const GamesPageWrapper = () => (
+  <PageWrapper>
+    <GamesPage />
+  </PageWrapper>
+);
+
+const AboutPageWrapper = () => (
+  <PageWrapper>
+    <AboutPage />
+  </PageWrapper>
+);
+
+const ContactPageWrapper = () => (
+  <PageWrapper>
+    <ContactPage />
+  </PageWrapper>
+);
+
 function App() {
   const location = useLocation();
   const [isPending, startTransition] = useTransition();
@@ -183,21 +148,19 @@ function App() {
     
     preloadRouteComponents();
   }, [location.pathname]);
-  
+
   // Handle route changes with startTransition
   const handleRouteChange = React.useCallback((path) => {
     startTransition(() => {
       setIsNavigating(true);
-      // Use requestAnimationFrame to ensure the UI updates before the heavy work
       requestAnimationFrame(() => {
         window.history.pushState({}, '', path);
         window.dispatchEvent(new PopStateEvent('popstate'));
-        // Small delay to ensure smooth transition
         setTimeout(() => setIsNavigating(false), 50);
       });
     });
   }, []);
-  
+
   // Add navigation handler to window for global access if needed
   React.useEffect(() => {
     window.handleRouteChange = handleRouteChange;
@@ -205,65 +168,39 @@ function App() {
       delete window.handleRouteChange;
     };
   }, [handleRouteChange]);
-  
+
+  // Add/remove body class
   useEffect(() => {
-    // Add class to body when component mounts
     document.body.classList.add('custom-cursor-active');
-    
-    // Remove class when component unmounts
     return () => {
       document.body.classList.remove('custom-cursor-active');
     };
   }, []);
-  
-  // Create a stable reference to the routes
-  const routes = React.useMemo(() => [
-    { path: "/", element: <HomePageWrapper /> },
-    { path: "/games", element: <GamesPageWrapper /> },
-    { path: "/about", element: <AboutPageWrapper /> },
-    { path: "/contact", element: <ContactPageWrapper /> },
-    { path: "*", element: <div>404 Not Found</div> }
-  ], []);
-  
-  // Wrap each route component in its own Suspense boundary
-  const createRouteElement = (route) => (
-    <ErrorBoundary key={route.path}>
+
+  return (
+    <ErrorBoundary>
       <Suspense fallback={<LoadingScreen />}>
-        {route.element}
+        <div className={`app-container ${isAboutPage ? 'about-page' : ''}`}>
+          <CustomCursor />
+          <Routes>
+            <Route path="/" element={<HomePageWrapper />} />
+            <Route path="/games" element={<GamesPageWrapper />} />
+            <Route path="/about" element={<AboutPageWrapper />} />
+            <Route path="/contact" element={<ContactPageWrapper />} />
+            <Route path="*" element={
+              <PageWrapper>
+                <div className="not-found">
+                  <h2>404 - Page Not Found</h2>
+                  <p>The page you're looking for doesn't exist or has been moved.</p>
+                  <Link to="/" className="back-home">Go to Home</Link>
+                </div>
+              </PageWrapper>
+            } />
+          </Routes>
+        </div>
       </Suspense>
     </ErrorBoundary>
   );
-  
-  // Main content with Suspense boundary
-  const mainContent = React.useMemo(() => {
-    const currentRoute = routes.find(r => r.path === location.pathname) || routes.find(r => r.path === "*");
-    return (
-      <Routes>
-        {routes.map(route => (
-          <Route 
-            key={route.path}
-            path={route.path} 
-            element={createRouteElement(route)}
-          />
-        ))}
-      </Routes>
-    );
-  }, [location.pathname, routes]);
-  
-  // Wrap the entire app in a transition boundary
-  // Optimize rendering with useMemo
-  const appContent = useMemo(() => (
-    <div className="App">
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingScreen />}>
-          <CustomCursor />
-          {isPending || isNavigating ? <LoadingScreen /> : mainContent}
-        </Suspense>
-      </ErrorBoundary>
-    </div>
-  ), [isPending, isNavigating, mainContent]);
-
-  return appContent;
 }
 
 export default App;

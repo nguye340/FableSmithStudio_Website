@@ -27,6 +27,7 @@ import ToolsSection from './components/ToolsSection/ToolsSection.js';
 import PageBackground from './components/PageBackground/PageBackground.js';
 import SparkleEffect from './components/SparkleEffect.js';
 import SparkleTrail from './components/SparkleTrail.js';
+import MouseSparkleEffect from './components/MouseSparkleEffect.js';
 
 function GamesPage() {
   const [hoveredImage, setHoveredImage] = useState(null);
@@ -56,19 +57,20 @@ function GamesPage() {
       <SparkleTrail count={15} size={40} />
       <div className="games-page-container" opacity={0.3} brightness={0.3} contrast={1.1}>
       <div className="games-page">
-        {/* Hero Section */}
-        <div className="games-hero-section">
-          <div className="games-hero-content">
-            <div className="games-hero-title-container">
-              <img 
-                src={titleImage} 
-                alt="Heart O' Nightmares" 
-                className="games-hero-title-image" 
-                onError={(e) => {
-                  console.error('Error loading title image:', e.target.src);
-                  e.target.style.display = 'none';
-                }}
-              />
+        <MouseSparkleEffect />
+          {/* Hero Section */}
+          <div className="games-hero-section">
+            <div className="games-hero-content">
+              <div className="games-hero-title-container">
+                <img 
+                  src={titleImage} 
+                  alt="Heart O' Nightmares" 
+                  className="games-hero-title-image" 
+                  onError={(e) => {
+                    console.error('Error loading title image:', e.target.src);
+                    e.target.style.display = 'none';
+                  }}
+                />
             </div>
             <p className="games-hero-subtitle">A dreamlike journey through fear, memory, and forgotten magic</p>
             <div className="games-hero-buttons">

@@ -58,10 +58,10 @@ const AboutPage = () => {
         </div>
         
         {/* About Fablesmiths Section */}
-        <section className="about-fablesmiths-section">
+        <section className="about-fablesmiths-section" style={{paddingTop: '2rem'}}>
           <div className="about-content">
             <h2 className="about-heading">Our Mission</h2>
-            <p className="about-text">
+            <p className="about-text" style={{ fontFamily: 'Cormorant Garamond', fontSize: '1.5rem' }}>
               Fablesmiths began in 2025 with one belief - stories shouldn't be told <em>to</em> you, but <em>through</em> you. Our developers, artists, and writers work side by side with heart, focus, and expertise to build worlds that respond, challenge, and reach <em>you</em>.</p>
           </div>
         </section>
@@ -69,7 +69,6 @@ const AboutPage = () => {
         {/* Meet the Fable Smiths Section */}
         <section className="team-section">
           <div className="team-content">
-            {/*<h2 className="team-title">Meet the Fable Smiths</h2>*/}
             <div className="team-members">
               <div className="team-members-row">
                 {/* Team Member 1 - Han */}
@@ -131,7 +130,6 @@ const AboutPage = () => {
                     </div>
                   </div>
                 </div>
-
                 {/* Team Member 4 - Emily */}
                 <div className="team-member">
                   <ProfilePicture 
@@ -149,7 +147,6 @@ const AboutPage = () => {
                     </div>
                   </div>
                 </div>
-
                 {/* Team Member 5 - Valerie */}
                 <div className="team-member">
                   <ProfilePicture 

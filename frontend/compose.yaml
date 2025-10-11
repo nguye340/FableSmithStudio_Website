@@ -7,17 +7,14 @@
 # You can add other services your application may depend on here, such as a
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
+version: '3.8'
 services:
   frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
-      - "3000:80"  # Using port 80 for production
+      - "3000:3000"
     environment:
       - NODE_ENV=production
-    volumes:
-      - ./build:/usr/share/nginx/html
     restart: unless-stopped
 
 # The commented out section below is an example of how to define a PostgreSQL

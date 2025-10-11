@@ -82,7 +82,7 @@ const ContactPage = () => {
     <PageBackground className="contact-page" opacity={0.08}>
       <div className="contact-content-wrapper">
         <div className="contact-header">
-          <h1>Contact Us</h1>
+          <h1 style={{paddingTop: '2rem'}}>Contact Us</h1>
           <p>Have questions or want to collaborate? Reach out to us!</p>
         </div>
         
