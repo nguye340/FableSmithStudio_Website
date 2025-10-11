@@ -157,9 +157,6 @@ const AboutPage = () => {
                       <a href="https://www.linkedin.com/in/valerie-wei-art/" target="_blank" rel="noopener noreferrer" className="member-link" aria-label="LinkedIn">
                         <FaLinkedin className="social-icon" />
                       </a>
-                      <a href="#" className="member-link" aria-label="Portfolio">
-                        <FaGlobe className="social-icon" />
-                      </a>
                     </div>
                   </div>
                 </div>
